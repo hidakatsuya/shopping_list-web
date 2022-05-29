@@ -1,24 +1,9 @@
-# README
+# Shopping List
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple app to manage my family's shopping list.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+docker-compose build
+docker-compose run app bin/setup
+docker-compose up -d app
+```
