@@ -1,0 +1,7 @@
+<%= turbo_stream.remove @item %>
+
+<% unless Item.incompletes.exists? %>
+  <%= turbo_stream.update Item.new do %>
+    <%= render 'items/empty_state' %>
+  <% end %>
+<% end %>

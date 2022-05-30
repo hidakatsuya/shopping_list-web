@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      item:
+        name: アイテム
+    errors:
+      messages:
+        blank: を入力してください。

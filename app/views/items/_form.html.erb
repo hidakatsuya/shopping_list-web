@@ -1,0 +1,10 @@
+<%= form_for item, html: { class: 'item form' } do |f| %>
+  <%= form_error_notification(item) %>
+
+  <div class="form__group">
+    <%= f.text_field :name, class: 'form__input', placeholder: '新しいアイテム', autofocus: true %>
+  </div>
+
+  <%= f.submit class: 'btn btn--secondary' %>
+  <%= link_to 'キャンセル', items_path, class: 'btn btn--light' %>
+<% end %>

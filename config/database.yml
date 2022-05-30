@@ -86,4 +86,4 @@ production:
   <<: *default
   database: shopping_list_production
   username: shopping_list
-  password: <%= ENV["QUOTE_EDITOR_DATABASE_PASSWORD"] %>
+  password: <%= ENV["SHOPPING_LIST_DATABASE_PASSWORD"] %>
