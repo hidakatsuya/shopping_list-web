@@ -1,9 +1,0 @@
-.header {
-  gap: var(--space-s);
-  margin-top: var(--space-m);
-  margin-bottom: var(--space-l);
-
-  @include media(tabletAndUp) {
-    margin-bottom: var(--space-xl);
-  }
-}
