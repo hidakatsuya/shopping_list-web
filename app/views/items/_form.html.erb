@@ -1,10 +1,19 @@
-<%= form_for item, html: { class: 'item form' } do |f| %>
+<%= form_with model: item, html: { class: 'd-flex flex-wrap align-items-center gap-2 rounded rounded-3 shadow-sm p-2 mb-2 bg-white' } do |f| %>
   <%= form_error_notification(item) %>
 
-  <div class="form__group">
-    <%= f.text_field :name, class: 'form__input', placeholder: '新しいアイテム', autofocus: true %>
+  <div class="flex-grow-1">
+    <%= f.text_field :name, class: 'd-block d-100 form-control', placeholder: '新しいアイテム', autofocus: true %>
   </div>
 
-  <%= f.submit class: 'btn btn--secondary' %>
-  <%= link_to 'キャンセル', items_path, class: 'btn btn--light' %>
+  <%= link_to items_path, class: 'btn btn-light' do %>
+    <% if item.new_record? %>
+      <i class="bi bi-x-lg"></i>
+    <% else %>
+      <i class="bi bi-arrow-90deg-left"></i>
+    <% end %>
+  <% end %>
+
+  <%= f.button class: 'btn btn-light' do %>
+    <i class="bi bi-check-lg"></i>
+  <% end %>
 <% end %>

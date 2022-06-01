@@ -1,1 +1,16 @@
 /* Application styles */
+
+body {
+  background-color: #fcfaf7;
+}
+
+.container {
+  max-width: 960px;
+}
+
+.btn.btn-none {
+  border: none;
+  background-color: transparent;
+  outline: none !important;
+  box-shadow: none !important;
+}

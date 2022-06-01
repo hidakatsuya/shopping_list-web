@@ -1,18 +1,18 @@
-<main class="container">
-  <div class="header">
-    <%= link_to 'アイテムを追加',
-                new_item_path,
-                data: { turbo_frame: dom_id(Item.new) },
-                class: "btn btn--primary" %>
-  </div>
-
-  <%= turbo_frame_tag Item.new do %>
-    <% if @items.none? %>
-      <%= render 'items/empty_state' %>
-    <% end %>
+<div class="text-center mb-2">
+  <%= link_to new_item_path,
+              data: { turbo_frame: dom_id(Item.new) },
+              class: "btn btn-outline-primary" do %>
+    <i class="bi bi-plus-lg"></i>
+    アイテムを追加
   <% end %>
+</div>
 
-  <%= turbo_frame_tag 'items' do %>
-    <%= render @items %>
+<%= turbo_frame_tag Item.new do %>
+  <% if @items.none? %>
+    <%= render 'items/empty_state' %>
   <% end %>
-</main>
+<% end %>
+
+<%= turbo_frame_tag 'items' do %>
+  <%= render @items %>
+<% end %>
