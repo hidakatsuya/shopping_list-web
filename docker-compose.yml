@@ -17,10 +17,8 @@ services:
       - .:/app:cached
       - bundle:/bundle
     environment:
-      REDIS_URL: redis://redis:6379
       PLAYWRIGHT_URL: 'ws://playwright:8888/ws'
     depends_on:
-      - redis
       - postgres
 
   postgres:
@@ -32,13 +30,6 @@ services:
     environment:
       POSTGRES_PASSWORD: password
 
-  redis:
-    image: redis:5.0-alpine
-    ports:
-      - '16379:6379'
-    volumes:
-      - redis-data:/data
-
   playwright:
     build:
       context: .
@@ -48,6 +39,5 @@ services:
     command: npx playwright run-server --port 8888 --path /ws
 
 volumes:
-  redis-data:
   bundle:
   pg-data:
