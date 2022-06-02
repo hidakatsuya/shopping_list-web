@@ -1,11 +1,14 @@
-<main class="container">
-  <%= link_to sanitize("&larr; Back to item"), item_path(@item) %>
-
-  <div class="header">
-    <h1>Edit item</h1>
-  </div>
-
-  <%= turbo_frame_tag @item do %>
-    <%= render "form", item: @item %>
+<div class="mb-3">
+  <%= link_to items_path, class: 'btn btn-light' do %>
+    <i class="bi bi-arrow-left"></i>
+    戻る
   <% end %>
-</main>
+</div>
+
+<div class="fs-3 ps-2 mb-3 mt-2">
+  編集
+</div>
+
+<%= turbo_frame_tag @item do %>
+  <%= render "form", item: @item %>
+<% end %>
