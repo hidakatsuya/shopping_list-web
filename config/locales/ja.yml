@@ -4,6 +4,10 @@ ja:
       item:
         name: アイテム
         user: ユーザー
+      user:
+        email: メールアドレス
+        password: パスワード
+
     errors:
       messages:
         blank: を入力してください。

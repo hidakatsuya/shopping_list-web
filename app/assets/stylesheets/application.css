@@ -7,7 +7,11 @@ body {
   max-width: 960px;
 }
 
-.btn.btn-none {
+.container-session {
+  max-width: 330px;
+}
+
+.btn-none {
   border: none;
   background-color: transparent;
   outline: none !important;
