@@ -2,15 +2,15 @@ class ItemsController < ApplicationController
   before_action :set_item, only: %i(edit update destroy complete incomplete)
 
   def index
-    @items = Item.ordered.incompletes
+    @items = current_user.items.ordered.incompletes
   end
 
   def new
-    @item = Item.new
+    @item = current_user.items.build
   end
 
   def create
-    @item = Item.new(item_params)
+    @item = current_user.items.build(item_params)
 
     if @item.save
       respond_to do |format|
@@ -56,7 +56,7 @@ class ItemsController < ApplicationController
   private
 
   def set_item
-    @item = Item.find(params[:id])
+    @item = current_user.items.find(params[:id])
   end
 
   def item_params

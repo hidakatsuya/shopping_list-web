@@ -3,6 +3,8 @@ ja:
     attributes:
       item:
         name: アイテム
+        user: ユーザー
     errors:
       messages:
         blank: を入力してください。
+        required: は必須です。
