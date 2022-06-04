@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'pages#home'
+
   devise_for :users
 
   resources :items, except: [:show] do
