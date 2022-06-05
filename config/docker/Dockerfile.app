@@ -8,6 +8,9 @@ RUN mkdir /bundle && chown rails /bundle
 
 USER rails
 
+# turn off auto complete in rails console
+RUN echo 'IRB.conf[:USE_AUTOCOMPLETE] = false' > ~/.irbrc
+
 WORKDIR /app
 
 # configure bundler
