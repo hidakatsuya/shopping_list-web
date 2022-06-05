@@ -30,12 +30,10 @@ services:
       POSTGRES_PASSWORD: password
 
   playwright:
-    build:
-      context: .
-      dockerfile: ./config/docker/Dockerfile.playwright
+    image: ghcr.io/hidakatsuya/playwright-test-server:latest
     ports:
       - '8888:8888'
-    command: npx playwright run-server --port 8888 --path /ws
+    command: --port 8888 --path /ws
 
 volumes:
   bundle:

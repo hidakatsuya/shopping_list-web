@@ -1,5 +1,11 @@
-require "test_helper"
+require 'test_helper'
+require 'playwright_driver'
+
+Capybara.server_host = '0.0.0.0'
+Capybara.app_host = "http://#{`hostname`.strip&.downcase || "0.0.0.0"}"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
+  include Warden::Test::Helpers
+
+  driven_by :playwright, screen_size: [1400, 1400]
 end
