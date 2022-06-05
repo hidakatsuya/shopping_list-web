@@ -1,0 +1,21 @@
+name: Test
+
+on: push
+
+jobs:
+  system_test:
+    name: Test
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build and setup
+      run: |
+        docker-compose build
+        docker-compose run app bin/setup
+        docker-compose up -d
+
+    - name: Test
+      run: docker-compose exec -T app bin/rails test:all
