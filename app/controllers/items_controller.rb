@@ -60,7 +60,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :completed)
+    params.require(:item).permit(:name)
   end
 
   def update_completion(completion)
