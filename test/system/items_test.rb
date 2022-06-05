@@ -1,43 +1,54 @@
-require "application_system_test_case"
+require 'application_system_test_case'
 
 class ItemsTest < ApplicationSystemTestCase
   setup do
-    @item = items(:one)
+    login_as users(:user_a)
   end
 
-  test "visiting the index" do
-    visit items_url
-    assert_selector "h1", text: "Items"
+  test 'Adding a new item' do
+    visit items_path
+
+    click_on '新しいアイテム'
+    fill_in 'アイテム', with: 'Capybara item'
+
+    click_on '送信'
+
+    assert_text 'Capybara item'
   end
 
-  test "should create item" do
-    visit items_url
-    click_on "New item"
+  test 'Updating an item' do
+    visit items_path
 
-    fill_in "Name", with: @item.name
-    fill_in "Purchased at", with: @item.purchased_at
-    click_on "Create Item"
+    click_on '編集', match: :first
+    fill_in 'アイテム', with: 'Updated item'
 
-    assert_text "Item was successfully created"
-    click_on "Back"
+    click_on '送信'
+
+    assert_text 'Updated item'
   end
 
-  test "should update Item" do
-    visit item_url(@item)
-    click_on "Edit this item", match: :first
+  test 'Destroying an item' do
+    visit items_path
+    assert_text items(:one).name
 
-    fill_in "Name", with: @item.name
-    fill_in "Purchased at", with: @item.purchased_at
-    click_on "Update Item"
+    click_on '削除', match: :first
 
-    assert_text "Item was successfully updated"
-    click_on "Back"
+    assert_no_text items(:one).name
   end
 
-  test "should destroy Item" do
-    visit item_url(@item)
-    click_on "Destroy this item", match: :first
+  test 'Doing complete/incomplete an item' do
+    visit items_path
 
-    assert_text "Item was successfully destroyed"
+    assert_no_selector '.text-decoration-line-through', text: items(:one).name
+
+    click_on '完了', match: :first
+
+    assert_selector '.text-decoration-line-through', text: items(:one).name
+
+    click_on '未完了', match: :first
+
+    assert_no_selector '.text-decoration-line-through', text: items(:one).name
+
+    assert_button '完了'
   end
 end

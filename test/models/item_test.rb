@@ -2,7 +2,7 @@ require "test_helper"
 
 class ItemTest < ActiveSupport::TestCase
   test 'scope :incompletes' do
-    assert_equal [items(:one)], Item.incompletes
+    assert_equal items(:one, :three), Item.incompletes
   end
 
   test '#complete' do

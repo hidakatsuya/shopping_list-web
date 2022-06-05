@@ -2,7 +2,8 @@
   <%= form_error_notification(item) %>
 
   <div class="flex-grow-1">
-    <%= f.text_field :name, class: 'd-block d-100 form-control', placeholder: '新しいアイテム', autofocus: true %>
+    <%= f.label :name, class: 'visually-hidden' %>
+    <%= f.text_field :name, class: 'd-block d-100 form-control', placeholder: 'アイテム名', autofocus: true %>
   </div>
 
   <%= link_to items_path, class: 'btn btn-light' do %>
@@ -13,7 +14,7 @@
     <% end %>
   <% end %>
 
-  <%= f.button class: 'btn btn-light' do %>
+  <%= f.button value: '送信', class: 'btn btn-light' do %>
     <i class="bi bi-check-lg"></i>
   <% end %>
 <% end %>
