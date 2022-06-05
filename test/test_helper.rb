@@ -10,4 +10,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def controller_assigns(varaiable_name)
+    @controller.view_assigns[varaiable_name.to_s]
+  end
 end

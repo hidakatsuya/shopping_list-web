@@ -1,9 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   name: MyString
-#   completed: false
+one:
+  user: user_a
+  name: Item One
+  completed: false
 
-# two:
-#   name: MyString
-#   completed: true
+two:
+  user: user_a
+  name: Item Two
+  completed: true
+
+three:
+  user: user_b
+  name: Item Three
+  completed: false
