@@ -7,10 +7,10 @@ class Item < ApplicationRecord
   scope :incompletes, -> { where(completed: false) }
 
   def complete
-    update(completed: true)
+    update(completed: true, completed_at: Time.current)
   end
 
   def incomplete
-    update(completed: false)
+    update(completed: false, completed_at: nil)
   end
 end
