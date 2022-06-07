@@ -2,7 +2,15 @@ require 'application_system_test_case'
 
 class ItemsTest < ApplicationSystemTestCase
   setup do
-    login_as users(:user_a)
+    @logged_user = users(:user_a)
+    login_as @logged_user
+  end
+
+  test 'Showing the index with empty items' do
+    @logged_user.items.destroy_all
+
+    visit items_path
+    assert_text 'アイテムはありません'
   end
 
   test 'Adding a new item' do
@@ -29,11 +37,11 @@ class ItemsTest < ApplicationSystemTestCase
 
   test 'Destroying an item' do
     visit items_path
-    assert_text items(:one).name
 
     click_on '削除', match: :first
 
     assert_no_text items(:one).name
+    assert_text 'アイテムはありません'
   end
 
   test 'Doing complete/incomplete an item' do
