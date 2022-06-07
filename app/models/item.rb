@@ -5,6 +5,7 @@ class Item < ApplicationRecord
 
   scope :ordered, -> { order(id: :desc) }
   scope :incompletes, -> { where(completed: false) }
+  scope :completes, -> { where(completed: true) }
 
   def complete
     update(completed: true, completed_at: Time.current)

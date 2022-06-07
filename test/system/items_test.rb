@@ -40,7 +40,6 @@ class ItemsTest < ApplicationSystemTestCase
 
     click_on '削除', match: :first
 
-    assert_no_text items(:one).name
     assert_text 'アイテムはありません'
   end
 
