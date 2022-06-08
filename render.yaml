@@ -1,10 +1,14 @@
 databases:
   - name: shopping_list
+    plan: free
+    region: singapore
     databaseName: shopping_list
     user: shopping_list
 
 services:
   - type: web
+    plan: free
+    region: singapore
     name: shopping_list
     env: ruby
     buildCommand: "./bin/render-build.sh"
