@@ -9,7 +9,6 @@ two:
   user: user_a
   name: Item Two
   completed: true
-  completed_at: <%= Time.current %>
 
 three:
   user: user_b

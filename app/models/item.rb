@@ -8,10 +8,10 @@ class Item < ApplicationRecord
   scope :completes, -> { where(completed: true) }
 
   def complete
-    update(completed: true, completed_at: Time.current)
+    update(completed: true)
   end
 
   def incomplete
-    update(completed: false, completed_at: nil)
+    update(completed: false)
   end
 end
