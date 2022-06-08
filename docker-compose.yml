@@ -10,7 +10,7 @@ services:
       - '3000:3000'
     volumes:
       - .:/app:cached
-      - bundle:/bundle
+      - ${BUNDLE_STORE_PATH:-./tmp/bundle}:/bundle
     environment:
       PLAYWRIGHT_URL: 'ws://playwright:8888/ws'
     depends_on:
@@ -32,5 +32,4 @@ services:
     command: --port 8888 --path /ws
 
 volumes:
-  bundle:
   pg-data:

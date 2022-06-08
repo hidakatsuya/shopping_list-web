@@ -2,6 +2,10 @@ name: Test
 
 on: push
 
+env:
+  BUNDLE_STORE_PATH: /tmp/bundle
+  RUBY_VERSION: '3.1.0'
+
 jobs:
   system_test:
     name: Test
@@ -9,7 +13,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ env.RUBY_VERSION }}
+
+    - name: Cache
+      id: cache
+      uses: actions/cache@v3
+      with:
+        path: ${{ env.BUNDLE_STORE_PATH }}
+        key: ${{ env.RUBY_VERSION }}-gemt-${{ hashFiles('Gemfile.lock') }}
+        restore-keys: |
+          ${{ env.RUBY_VERSION }}-gems-
+
+    - name: Bundle
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: |
+        bundle config path $BUNDLE_STORE_PATH
+        bundle install --jobs 4 --retry 3
 
     - name: Build and setup
       run: |
