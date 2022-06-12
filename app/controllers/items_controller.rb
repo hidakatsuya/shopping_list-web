@@ -53,10 +53,6 @@ class ItemsController < ApplicationController
     update_completion :incomplete
   end
 
-  def recently_used
-    @item_names = current_user.items.completes.limit(10).distinct.pluck(:name)
-  end
-
   private
 
   def set_item

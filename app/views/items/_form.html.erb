@@ -5,10 +5,7 @@
     <%= f.label :name, class: 'visually-hidden' %>
     <%= f.text_field :name, placeholder: 'アイテム名',
                             autofocus: true,
-                            class: 'd-block d-100 form-control',
-                            list: item.new_record? ? 'recently-used-item-list' : nil %>
-
-    <%= turbo_frame_tag 'recently_used_items', src: recently_used_items_path if item.new_record? %>
+                            class: 'd-block d-100 form-control' %>
   </div>
 
   <%= link_to items_path, class: 'btn btn-light' do %>

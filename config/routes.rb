@@ -8,9 +8,5 @@ Rails.application.routes.draw do
       post 'complete'
       post 'incomplete'
     end
-
-    collection do
-      get 'recently_used'
-    end
   end
 end
