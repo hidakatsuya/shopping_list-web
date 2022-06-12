@@ -21,7 +21,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     get new_item_path
 
     assert_response :success
-    assert controller_assigns(:item).user == @logged_user
+    assert_equal @logged_user, controller_assigns(:item).user
   end
 
   test 'create with valid params' do

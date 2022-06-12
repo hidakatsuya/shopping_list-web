@@ -1,0 +1,16 @@
+<main class="container">
+  <div class="mb-3">
+    <%= link_to items_path, class: 'btn btn-light' do %>
+      <i class="bi bi-arrow-left"></i>
+      戻る
+    <% end %>
+  </div>
+
+  <div class="fs-3 ps-2 mb-3 mt-2">
+    APIトークン
+  </div>
+
+  <%= turbo_frame_tag 'token' do %>
+    <%= render 'token', token: @token %>
+  <% end %>
+</main>

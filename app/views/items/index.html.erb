@@ -1,10 +1,11 @@
 <main class="container">
-  <div class="text-center mb-3">
-    <%= link_to new_item_path,
-                data: { turbo_frame: dom_id(Item.new) },
-                class: "btn btn-outline-primary" do %>
+  <div class="text-center mb-3 position-relative">
+    <%= link_to new_item_path, data: { turbo_frame: dom_id(Item.new) }, class: "btn btn-outline-primary" do %>
       <i class="bi bi-plus-lg"></i>
       新しいアイテム
+    <% end %>
+    <%= link_to settings_path, class: 'btn btn-light position-absolute top-50 end-0 translate-middle-y' do %>
+      <i class="bi bi-gear-fill me-1"></i>設定
     <% end %>
   </div>
 

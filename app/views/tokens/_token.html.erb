@@ -1,0 +1,20 @@
+<div class="mb-2">
+  <%= text_field_tag 'token-value', token.value, class: 'form-control',
+                                                 readonly: true,
+                                                 placeholder: 'トークンは設定されていません。' %>
+</div>
+
+<div class="d-flex align-items-center gap-2">
+  <%= button_to regenerate_token_path, method: :patch,
+                                       value: '生成',
+                                       class: 'btn btn-outline-primary',
+                                       form_class: 'd-inline' do %>
+    <%= token.new_record? ? '生成' : '再生成' %>
+  <% end %>
+
+  <% if token.persisted? %>
+    <%= button_to token_path, method: :delete, value: '削除', class: 'btn btn-outline-danger' do %>
+      削除
+    <% end %>
+  <% end %>
+</div>
