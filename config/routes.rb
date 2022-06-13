@@ -16,4 +16,8 @@ Rails.application.routes.draw do
       post 'incomplete'
     end
   end
+
+  namespace :api do
+    post 'items' => 'items#create'
+  end
 end
