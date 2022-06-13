@@ -51,12 +51,10 @@ class ItemsTest < ApplicationSystemTestCase
     click_on '完了', match: :first
 
     assert_selector '.text-decoration-line-through', text: items(:one).name
-    assert_no_button '編集'
 
     click_on '未完了', match: :first
 
     assert_no_selector '.text-decoration-line-through', text: items(:one).name
-    assert_button '編集'
 
     assert_button '完了'
   end
