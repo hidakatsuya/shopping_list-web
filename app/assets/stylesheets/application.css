@@ -11,6 +11,10 @@ body {
   max-width: 330px;
 }
 
+.container-settings {
+  max-width: 640px;
+}
+
 .btn-none {
   border: none;
   background-color: transparent;
