@@ -6,5 +6,6 @@ class CreateTokens < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+    add_index :tokens, :value
   end
 end
