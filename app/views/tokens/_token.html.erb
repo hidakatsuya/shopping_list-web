@@ -1,7 +1,15 @@
-<div class="mb-2">
-  <%= text_field_tag 'token-value', token.value, class: 'form-control',
+<div class="input-group mb-2" data-controller="clipboard">
+  <%= text_field_tag 'token-value', token.value, class: 'form-control p-2',
                                                  readonly: true,
-                                                 placeholder: 'トークンは設定されていません。' %>
+                                                 placeholder: 'トークンは設定されていません。',
+                                                 data: { 'clipboard-target' => 'source' } %>
+  <% if token.persisted? %>
+    <%= button_tag type: 'button',
+                   data: { 'action' => 'clipboard#copy', 'clipboard-target' => 'button' },
+                   class: 'btn btn-secondary' do %>
+      <i class="bi bi-stickies"></i>
+    <% end %>
+  <% end %>
 </div>
 
 <div class="d-flex align-items-center gap-2">

@@ -16,7 +16,7 @@ class ItemsTest < ApplicationSystemTestCase
   test 'Adding a new item' do
     visit items_path
 
-    click_on '新しいアイテム'
+    click_on '追加する'
     fill_in 'アイテム', with: 'Capybara item'
 
     click_on '送信'
