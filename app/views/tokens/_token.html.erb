@@ -15,13 +15,13 @@
 <div class="d-flex align-items-center gap-2">
   <%= button_to regenerate_token_path, method: :patch,
                                        value: '生成',
-                                       class: 'btn btn-primary',
+                                       class: 'btn btn-outline-primary',
                                        form_class: 'd-inline' do %>
     <%= token.new_record? ? '生成' : '再生成' %>
   <% end %>
 
   <% if token.persisted? %>
-    <%= button_to token_path, method: :delete, value: '削除', class: 'btn btn-danger' do %>
+    <%= button_to token_path, method: :delete, value: '削除', class: 'btn btn-outline-danger' do %>
       削除
     <% end %>
   <% end %>
