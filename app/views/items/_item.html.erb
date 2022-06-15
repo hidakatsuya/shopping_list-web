@@ -1,5 +1,5 @@
 <%= turbo_frame_tag item do %>
-  <div class="d-flex align-items-center gap-2 rounded rounded-3 p-2 mb-2 bg-light">
+  <div class="d-flex align-items-center gap-2 rounded rounded-3 border border-gray shadow-sm p-2 mb-2 bg-white">
     <% if item.completed? %>
       <%= button_to incomplete_item_path(item), method: :post, value: '未完了', class: 'btn btn-none' do %>
         <i class="bi bi-check-square"></i>
