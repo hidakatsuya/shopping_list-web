@@ -3,4 +3,11 @@
 
   <h4 class="mb-3">APIトークン</h4>
   <%= turbo_frame_tag 'token', src: token_path %>
+
+  <div class="mt-4">
+    <%= button_to 'ログアウト', destroy_user_session_path, method: :delete,
+                                                         data: { turbo: false },
+                                                         class: 'btn btn-outline-danger',
+                                                         form_class: 'text-center' %>
+  </div>
 </main>

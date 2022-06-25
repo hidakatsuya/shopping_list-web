@@ -1,7 +1,9 @@
 user_a:
   email: user_a@example.com
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  provider: google_oauth2
+  uid: 1
 
 user_b:
   email: user_b@example.com
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  provider: google_oauth2
+  uid: 2

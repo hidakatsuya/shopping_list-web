@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :validatable,
-         :omniauthable, omniauth_providers: [:google_oauth2]
+  devise :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
   has_many :items, dependent: :destroy
   has_one :token, dependent: :destroy
 

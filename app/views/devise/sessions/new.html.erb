@@ -5,21 +5,10 @@
     </div>
   <% end %>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
-    <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'メールアドレス' %>
-
-    <div class="mt-2">
-      <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', placeholder: 'パスワード' %>
-    </div>
-
-    <div class="mt-2">
-      <%= f.submit 'ログイン', class: 'btn btn-outline-primary' %>
-    </div>
-  <% end %>
-
   <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post,
-                                                          class: 'btn btn-primary',
-                                                          data: { turbo: false } do %>
-    Google でログイン
+                                                            class: 'btn btn-primary w-100',
+                                                            form_class: 'text-center',
+                                                            data: { turbo: false } do %>
+    <i class="bi bi-google me-2"></i>Google でログイン
   <% end %>
 </main>
