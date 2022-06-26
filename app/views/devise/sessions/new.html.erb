@@ -6,6 +6,7 @@
   <% end %>
 
   <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post,
+                                                            value: 'Googleでログイン',
                                                             class: 'btn btn-primary w-100',
                                                             form_class: 'text-center',
                                                             data: { turbo: false } do %>
