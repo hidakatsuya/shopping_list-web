@@ -43,6 +43,3 @@
 
 # Ignore the dotenv files
 /.env
-
-# Ignore credential files
-/config/credentials.yml.enc
