@@ -4,7 +4,7 @@ require 'test_helper'
 require 'playwright_driver'
 
 Capybara.server_host = '0.0.0.0'
-Capybara.app_host = "http://#{`hostname`.strip&.downcase || "0.0.0.0"}"
+Capybara.app_host = "http://#{`hostname`.strip&.downcase || '0.0.0.0'}"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   include Warden::Test::Helpers
