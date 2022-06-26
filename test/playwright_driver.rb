@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'capybara-playwright-driver'
 
 Capybara.register_driver(:playwright) do |app|

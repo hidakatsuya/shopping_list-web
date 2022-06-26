@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def form_error_notification(model)
     render partial: 'layouts/error_notification', locals: { model: model } if model.errors.any?

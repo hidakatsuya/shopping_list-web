@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ItemsController < ApplicationController
   before_action :set_item, only: %i(edit update destroy complete incomplete)
 

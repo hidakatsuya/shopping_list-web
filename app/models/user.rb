@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   devise :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
   has_many :items, dependent: :destroy
