@@ -84,4 +84,6 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  database: shopping_list_production
+  username: shopping_list
+  password: <%= ENV["SHOPPING_LIST_DATABASE_PASSWORD"] %>
