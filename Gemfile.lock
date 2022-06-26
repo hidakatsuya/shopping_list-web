@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faye/websocket-driver-ruby.git
+  revision: 4739ec948d6af3f0c4c7179306bd8717fe1cf145
+  ref: 4739ec948d6af3f0c4c7179306bd8717fe1cf145
+  specs:
+    websocket-driver (0.7.5)
+      websocket-extensions (>= 0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -250,8 +258,6 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    websocket-driver (0.7.5)
-      websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
@@ -280,6 +286,7 @@ DEPENDENCIES
   tzinfo-data
   weak_parameters (>= 0.5.0)
   web-console
+  websocket-driver!
 
 RUBY VERSION
    ruby 3.1.0p0
