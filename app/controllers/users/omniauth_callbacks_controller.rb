@@ -15,7 +15,7 @@ module Users
       end
     end
 
-    def failuree
+    def failure
       redirect_to root_path
     end
   end
