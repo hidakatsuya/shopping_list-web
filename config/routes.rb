@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'settings' => 'pages#settings'
 
   resource :token, only: [:show, :destroy] do
-    patch :regenerate
+    patch 'regenerate'
   end
   resolve('Token') { [:token] }
 
@@ -25,6 +25,6 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    post 'items' => 'items#create'
+    post 'items', to: 'items#create'
   end
 end
