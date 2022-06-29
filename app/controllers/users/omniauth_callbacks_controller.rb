@@ -7,7 +7,7 @@ module Users
     def google_oauth2
       @user = User.from_omniauth(
         **user_auth_attributes(request.env['omniauth.auth']),
-        create_user: ENV['CREATE_USER_IF_NOT_EXISTS'].present?
+        create_user: Rails.configuration.create_user_if_not_exists
       )
 
       unless @user

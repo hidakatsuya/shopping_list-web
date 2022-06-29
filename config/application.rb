@@ -24,5 +24,8 @@ module ShoppingList
     config.i18n.default_locale = 'ja'
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
+
+    # Application specific configurations
+    config.create_user_if_not_exists = ENV['CREATE_USER_IF_NOT_EXISTS'].present?
   end
 end
