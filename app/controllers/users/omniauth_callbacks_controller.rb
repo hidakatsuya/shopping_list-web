@@ -10,7 +10,12 @@ module Users
         create_user: ENV['CREATE_USER_IF_NOT_EXISTS'].present?
       )
 
-      if @user.persisted?
+      unless @user
+        redirect_to new_user_session_url, alert: 'ログインできません。'
+        return
+      end
+
+      if @user&.persisted?
         sign_in_and_redirect @user, event: :authentication
       else
         session['devise.google_data'] = request.env['omniauth.auth'].except('extra')
