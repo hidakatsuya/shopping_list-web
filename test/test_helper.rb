@@ -16,16 +16,16 @@ class ActiveSupport::TestCase
     @controller.view_assigns[varaiable_name.to_s]
   end
 
-  def omniauth_mock(extra_auth: nil)
+  def omniauth_mock
     OmniAuth.configure do |config|
       config.test_mode = true
-      config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+      config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
         provider: 'google_oauth2',
         uid: '999',
         info: {
           email: 'user@example.com'
         }
-      }.merge(extra_auth || {}))
+      )
     end
   end
 
