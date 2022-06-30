@@ -5,6 +5,8 @@ require_relative '../config/environment'
 require 'rails/test_help'
 require 'minitest/mock'
 
+OmniAuth.config.test_mode = true
+
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
   parallelize(workers: :number_of_processors)
@@ -17,20 +19,17 @@ class ActiveSupport::TestCase
   end
 
   def omniauth_mock
-    OmniAuth.configure do |config|
-      config.test_mode = true
-      config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
-        provider: 'google_oauth2',
-        uid: '999',
-        info: {
-          email: 'user@example.com'
-        }
-      )
-    end
+    OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
+      provider: 'google_oauth2',
+      uid: '999',
+      info: {
+        email: 'user@example.com'
+      }
+    )
   end
 
-  def omniauth_mock_add(extra_auth)
-    OmniAuth.config.add_mock(:google_oauth2, extra_auth)
+  def omniauth_mock_add(extend_auth)
+    OmniAuth.config.add_mock(:google_oauth2, extend_auth)
   end
 
   def omniauth_mock_request_env
