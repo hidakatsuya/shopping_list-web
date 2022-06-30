@@ -4,7 +4,7 @@ on: push
 
 env:
   BUNDLE_STORE_PATH: /tmp/bundle
-  RUBY_VERSION: '3.1.0'
+  RUBY_VERSION: '3.1.2'
 
 jobs:
   system_test:
