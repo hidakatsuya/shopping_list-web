@@ -2,7 +2,7 @@ version: "3"
 
 services:
   app:
-    image: ghcr.io/hidakatsuya/rails-dev:ruby-3.1.0
+    image: ghcr.io/hidakatsuya/rails-dev:latest
     command: bash -c 'rm -f tmp/pids/server.pid; bin/rails s -b 0.0.0.0'
     tty: true
     stdin_open: true
