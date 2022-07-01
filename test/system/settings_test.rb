@@ -33,10 +33,10 @@ class SettingsTest < ApplicationSystemTestCase
     assert_button 'ログアウト'
     click_on 'ログアウト'
 
-    assert_button 'Googleでログイン'
+    assert_button 'Google でログイン'
 
     visit settings_path
-    assert_button 'Googleでログイン'
+    assert_button 'Google でログイン'
     assert_text 'ログインもしくはアカウント登録してください。'
   end
 end
