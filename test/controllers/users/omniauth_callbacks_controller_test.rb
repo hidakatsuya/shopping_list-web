@@ -7,7 +7,7 @@ class Users::OmniauthCallbacksControllerTest < ActionDispatch::IntegrationTest
 
   setup { omniauth_mock }
 
-  test 'callback with unknown user auth when CREATE_USER_IF_NOT_EXISTS is not set' do
+  test 'callback with new user auth when create_user_if_not_exists is disabled' do
     Rails.configuration.stub :create_user_if_not_exists, false do
       get user_google_oauth2_omniauth_callback_path, env: omniauth_mock_request_env
 
@@ -15,7 +15,7 @@ class Users::OmniauthCallbacksControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'callback with unknown user auth when CREATE_USER_IF_NOT_EXISTS is set' do
+  test 'callback with new user auth when create_user_if_not_exists is enabled' do
     Rails.configuration.stub :create_user_if_not_exists, true do
       assert_difference ->{ User.count }, 1 do
         get user_google_oauth2_omniauth_callback_path, env: omniauth_mock_request_env

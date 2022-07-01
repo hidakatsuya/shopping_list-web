@@ -10,9 +10,23 @@ class SettingsTest < ApplicationSystemTestCase
     visit settings_path
   end
 
-  test 'show' do
+  test 'API token' do
     assert_text 'APIトークン'
+
     assert_field 'token-value', with: @logged_user.token.value
+    assert_button '再生成'
+    assert_button '削除'
+
+    click_on '再生成'
+    assert_field 'token-value', with: @logged_user.reload.token.value
+    assert_button '再生成'
+    assert_button '削除'
+
+    click_on '削除'
+    assert_field 'token-value', with: ''
+    assert_button '生成'
+    assert_no_button '再生成'
+    assert_no_button '削除'
   end
 
   test 'sign out' do
