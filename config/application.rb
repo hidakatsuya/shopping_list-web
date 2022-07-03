@@ -21,10 +21,6 @@ module ShoppingList
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.i18n.default_locale = 'en'
-    config.time_zone = 'Tokyo'
-    config.active_record.default_timezone = :local
-
     # Email addresses to which accounts can be registered. If there is more than one,
     # separate them with a space.
     config.registrable_account_emails = ENV['REGISTRABLE_ACCOUNT_EMAILS']
