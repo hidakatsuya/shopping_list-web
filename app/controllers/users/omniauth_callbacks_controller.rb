@@ -5,9 +5,11 @@ module Users
     skip_before_action :verify_authenticity_token, only: :google_oauth2
 
     def google_oauth2
+      attributes = user_auth_attributes(request.env['omniauth.auth'])
+
       @user = User.from_omniauth(
-        **user_auth_attributes(request.env['omniauth.auth']),
-        create_user: Rails.configuration.create_user_if_not_exists
+        **attributes,
+        create_user: registarable?(attributes[:email])
       )
 
       unless @user
@@ -35,6 +37,11 @@ module Users
         uid: auth.uid,
         email: auth.info.email
       }
+    end
+
+    def registarable?(email)
+      registerable_emails = Rails.configuration.registrable_account_emails.presence&.split(' ')
+      registerable_emails.present? && registerable_emails.include?(email)
     end
   end
 end

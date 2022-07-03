@@ -38,4 +38,9 @@ class ActiveSupport::TestCase
       'omniauth.auth' => OmniAuth.config.mock_auth[:google_oauth2]
     }
   end
+
+  def registrable_account_emails_stub(*emails, &block)
+    value = emails.one? ? emails.first : emails.join(' ')
+    Rails.configuration.stub(:registrable_account_emails, value, &block)
+  end
 end

@@ -25,7 +25,8 @@ module ShoppingList
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
 
-    # Setting whether or not to create an user when singining in with no user registered.
-    config.create_user_if_not_exists = ENV['CREATE_USER_IF_NOT_EXISTS'].present?
+    # Email addresses to which accounts can be registered. If there is more than one,
+    # separate them with a space.
+    config.registrable_account_emails = ENV['REGISTRABLE_ACCOUNT_EMAILS']
   end
 end
