@@ -1,1 +1,50 @@
 en:
+  app_name: Shopping List
+
+  # views
+  devise:
+    sessions:
+      new:
+        sign_in_with_google: Sign in with Google
+
+  items:
+    empty_state:
+      empty: No items
+    form:
+      item_placeholder: Item Name
+    index:
+      add_item: Add item
+      settings: Settings
+
+  pages:
+    settings:
+      api_token_setting: API Token
+      sign_out: Sign out
+      delete_account: Delete account
+      are_you_sure_delete_account: Are you sure?
+
+  tokens:
+    token:
+      placeholder: No token is set
+      generate: Generate
+      regenerate: Regenerate
+      delete: Delete
+      copy: Copy
+
+  layouts:
+    header:
+      back: Back
+
+  # others
+  omniauth_callbacks:
+    sign_in_failed: Could not sign in
+
+  # models
+  activerecord:
+    attributes:
+      item:
+        name: Name
+        user: User
+      user:
+        email: Email
+

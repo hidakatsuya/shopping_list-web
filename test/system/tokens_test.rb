@@ -8,10 +8,10 @@ class TokensTest < ApplicationSystemTestCase
 
     visit token_path
 
-    assert_text 'APIトークン'
+    assert_text 'API Token'
     assert_field 'token-value', with: logged_user.token.value
-    assert_selector 'button', text: '再生成'
-    assert_button '削除'
+    assert_button 'Regenerate'
+    assert_button 'Delete'
   end
 
   test 'show with user has no token' do
@@ -19,10 +19,10 @@ class TokensTest < ApplicationSystemTestCase
 
     visit token_path
 
-    assert_text 'APIトークン'
+    assert_text 'API Token'
     assert_field 'token-value', with: ''
-    assert_selector 'button', text: '生成'
-    assert_no_button '削除'
+    assert_button 'Generate'
+    assert_no_button 'Delete'
   end
 
   test 'generate with user has no token' do
@@ -30,12 +30,14 @@ class TokensTest < ApplicationSystemTestCase
 
     visit token_path
 
-    click_on '生成'
+    ::Token.stub :generate_token, 'generated token' do
+      click_on 'Generate'
 
-    assert_text 'APIトークン'
-    assert_field 'token-value', with: logged_user.reload.token.value
-    assert_selector 'button', text: '再生成'
-    assert_button '削除'
+      assert_text 'API Token'
+      assert_field 'token-value', with: 'generated token'
+      assert_button 'Regenerate'
+      assert_button 'Delete'
+    end
   end
 
   test 'regenerate with user has token' do
@@ -43,12 +45,14 @@ class TokensTest < ApplicationSystemTestCase
 
     visit token_path
 
-    click_on '生成'
+    ::Token.stub :generate_token, 'regenerated token' do
+      click_on 'Regenerate'
 
-    assert_text 'APIトークン'
-    assert_field 'token-value', with: logged_user.reload.token.value
-    assert_selector 'button', text: '再生成'
-    assert_button '削除'
+      assert_text 'API Token'
+      assert_field 'token-value', with: 'regenerated token'
+      assert_button 'Regenerate'
+      assert_button 'Delete'
+    end
   end
 
   test 'delete with user has token' do
@@ -56,12 +60,12 @@ class TokensTest < ApplicationSystemTestCase
 
     visit token_path
 
-    click_on '削除'
+    click_on 'Delete'
 
-    assert_text 'APIトークン'
+    assert_text 'API Token'
     assert_field 'token-value', with: ''
-    assert_selector 'button', text: '生成'
-    assert_no_button '削除'
+    assert_button 'Generate'
+    assert_no_button 'Delete'
   end
 
   private

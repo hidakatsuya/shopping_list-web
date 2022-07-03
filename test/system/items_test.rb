@@ -12,16 +12,16 @@ class ItemsTest < ApplicationSystemTestCase
     @logged_user.items.destroy_all
 
     visit items_path
-    assert_text 'アイテムはありません'
+    assert_text 'No items'
   end
 
   test 'Adding a new item' do
     visit items_path
 
-    click_on '追加する'
-    fill_in 'アイテム', with: 'Capybara item'
+    click_on 'Add item'
+    fill_in 'Name', with: 'Capybara item'
 
-    click_on '送信'
+    click_on 'Submit'
 
     assert_text 'Capybara item'
   end
@@ -29,10 +29,10 @@ class ItemsTest < ApplicationSystemTestCase
   test 'Updating an item' do
     visit items_path
 
-    click_on '編集', match: :first
-    fill_in 'アイテム', with: 'Updated item'
+    click_on 'Edit', match: :first
+    fill_in 'Name', with: 'Updated item'
 
-    click_on '送信'
+    click_on 'Submit'
 
     assert_text 'Updated item'
   end
@@ -40,9 +40,9 @@ class ItemsTest < ApplicationSystemTestCase
   test 'Destroying an item' do
     visit items_path
 
-    click_on '削除', match: :first
+    click_on 'Delete', match: :first
 
-    assert_text 'アイテムはありません'
+    assert_text 'No items'
   end
 
   test 'Doing complete/incomplete an item' do
@@ -50,14 +50,14 @@ class ItemsTest < ApplicationSystemTestCase
 
     assert_no_selector '.text-decoration-line-through', text: items(:one).name
 
-    click_on '完了', match: :first
+    click_on 'Complete', match: :first
 
     assert_selector '.text-decoration-line-through', text: items(:one).name
 
-    click_on '未完了', match: :first
+    click_on 'Incomplete', match: :first
 
     assert_no_selector '.text-decoration-line-through', text: items(:one).name
 
-    assert_button '完了'
+    assert_button 'Complete'
   end
 end

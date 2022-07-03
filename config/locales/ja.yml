@@ -1,9 +1,49 @@
 ja:
+  app_name: 買い物リスト
+
+  # views
+  devise:
+    sessions:
+      new:
+        sign_in_with_google: Google でログイン
+
+  items:
+    empty_state:
+      empty: アイテムはありません
+    form:
+      item_placeholder: アイテム名
+    index:
+      add_item: 追加する
+      settings: 設定
+
+  pages:
+    settings:
+      api_token_setting: APIトークン
+      sign_out: ログアウト
+      delete_account: アカウント削除
+      are_you_sure_delete_account: 本当によろしいですか？
+
+  tokens:
+    token:
+      placeholder: トークンは設定されていません
+      generate: 生成
+      regenerate: 再生成
+      delete: 削除
+      copy: コピー
+
+  layouts:
+    header:
+      back: 戻る
+
+  # others
+  omniauth_callbacks:
+    sign_in_failed: ログインできません
+
+  # models
   activerecord:
     attributes:
       item:
-        name: アイテム
+        name: アイテム名
         user: ユーザー
       user:
         email: メールアドレス
-        password: パスワード

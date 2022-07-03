@@ -11,51 +11,33 @@ class SettingsTest < ApplicationSystemTestCase
   end
 
   test 'API token' do
-    within id: 'api-token' do
-      assert_text 'APIトークン'
+    assert_text 'API Token'
 
-      assert_field 'token-value', with: @logged_user.token.value
-      assert_button '再生成'
-      assert_button '削除'
-
-      Token.stub :generate_token, 'regenerated token' do
-        click_on '再生成'
-        assert_field 'token-value', with: 'regenerated token'
-      end
-      assert_button '再生成'
-      assert_button '削除'
-
-      click_on '削除'
-      assert_field 'token-value', with: ''
-      assert_button '生成'
-      assert_no_button '再生成'
-      assert_no_button '削除'
-    end
+    assert_field 'token-value', with: @logged_user.token.value
+    assert_button 'Regenerate'
+    assert_button 'Delete'
   end
 
   test 'sign out' do
-    assert_button 'ログアウト'
+    click_on 'Sign out'
 
-    click_on 'ログアウト'
-
-    assert_button 'Google でログイン'
+    assert_button 'Sign in with Google'
 
     visit settings_path
-    assert_button 'Google でログイン'
-    assert_text 'ログインもしくはアカウント登録してください。'
+    assert_button 'Sign in with Google'
+    assert_text /You need to sign in or sign up/
   end
 
   test 'delete account' do
-    assert_button 'アカウント削除'
     accept_confirm do
-      click_on 'アカウント削除'
+      click_on 'Delete account'
     end
 
-    assert_button 'Google でログイン'
+    assert_button 'Sign in with Google'
 
     visit settings_path
-    assert_button 'Google でログイン'
-    assert_text 'ログインもしくはアカウント登録してください。'
+    assert_button 'Sign in with Google'
+    assert_text /You need to sign in or sign up/
 
     assert_not User.exists?(@logged_user.id)
   end

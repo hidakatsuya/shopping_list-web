@@ -1,12 +1,13 @@
 <div class="input-group mb-2" data-controller="clipboard">
   <%= text_field_tag 'token-value', token.value, class: 'form-control p-2',
                                                  readonly: true,
-                                                 placeholder: 'トークンは設定されていません。',
+                                                 placeholder: t('.placeholder'),
                                                  data: { 'clipboard-target' => 'source' } %>
   <% if token.persisted? %>
     <%= button_tag type: 'button',
                    data: { 'action' => 'clipboard#copy', 'clipboard-target' => 'button' },
-                   class: 'btn btn-secondary' do %>
+                   class: 'btn btn-secondary',
+                   title: t('.copy') do %>
       <i class="bi bi-stickies"></i>
     <% end %>
   <% end %>
@@ -14,15 +15,14 @@
 
 <div class="d-flex align-items-center gap-2">
   <%= button_to regenerate_token_path, method: :patch,
-                                       value: '生成',
                                        class: 'btn btn-outline-primary',
                                        form_class: 'd-inline' do %>
-    <%= token.new_record? ? '生成' : '再生成' %>
+    <%= token.new_record? ? t('.generate') : t('.regenerate') %>
   <% end %>
 
   <% if token.persisted? %>
-    <%= button_to token_path, method: :delete, value: '削除', class: 'btn btn-outline-danger' do %>
-      削除
+    <%= button_to token_path, method: :delete, class: 'btn btn-outline-danger' do %>
+      <%= t '.delete' %>
     <% end %>
   <% end %>
 </div>

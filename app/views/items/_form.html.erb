@@ -3,7 +3,7 @@
 
   <div class="flex-grow-1">
     <%= f.label :name, class: 'visually-hidden' %>
-    <%= f.text_field :name, placeholder: 'アイテム名',
+    <%= f.text_field :name, placeholder: t('.item_placeholder'),
                             autofocus: true,
                             class: 'd-block d-100 form-control' %>
   </div>
@@ -16,7 +16,7 @@
     <% end %>
   <% end %>
 
-  <%= f.button value: '送信', class: 'btn btn-light' do %>
+  <%= f.button value: 'Submit', class: 'btn btn-light' do %>
     <i class="bi bi-check-lg"></i>
   <% end %>
 <% end %>

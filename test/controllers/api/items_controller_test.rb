@@ -25,7 +25,7 @@ class Api::ItemsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_response :unprocessable_entity
-    assert_equal({ 'message' => 'アイテムを入力してください'}, JSON.parse(response.body))
+    assert_equal({ 'message' => "Name can't be blank" }, JSON.parse(response.body))
   end
 
   test 'create' do

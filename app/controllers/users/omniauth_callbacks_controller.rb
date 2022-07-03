@@ -13,7 +13,7 @@ module Users
       )
 
       unless @user
-        redirect_to new_user_session_url, alert: 'ログインできません。'
+        redirect_to new_user_session_url, alert: t('omniauth_callbacks.sign_in_failed')
         return
       end
 
