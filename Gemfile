@@ -66,7 +66,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara-playwright-driver'
+  gem 'cuprite'
 end
 
 gem "devise", ">= 4.8.1"
