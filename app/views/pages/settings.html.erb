@@ -1,13 +1,18 @@
 <main class="container container-settings">
   <%= render partial: 'layouts/header', locals: { return_path: items_path } %>
 
-  <h4 class="mb-3">APIトークン</h4>
-  <%= turbo_frame_tag 'token', src: token_path %>
+  <div id="api-token">
+    <h4 class="mb-3">APIトークン</h4>
+    <%= turbo_frame_tag 'token', src: token_path %>
+  </div>
 
-  <div class="mt-4">
+  <div id="account" class="d-grid mt-5 col-6 gap-2 mx-auto">
     <%= button_to 'ログアウト', destroy_user_session_path, method: :delete,
-                                                         data: { turbo: false },
-                                                         class: 'btn btn-outline-danger',
-                                                         form_class: 'text-center' %>
+                                                         class: 'btn btn-outline-secondary w-100',
+                                                         form_class: 'd-inline-block' %>
+    <%= button_to 'アカウント削除', user_registration_path, method: :delete,
+                                                         form: { data: { turbo_confirm: '本当に削除しますか？' } },
+                                                         class: 'btn btn-danger w-100',
+                                                         form_class: 'd-inline-block' %>
   </div>
 </main>

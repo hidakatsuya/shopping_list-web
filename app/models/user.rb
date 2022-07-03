@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  devise :omniauthable, omniauth_providers: [:google_oauth2]
+  devise :registerable, :omniauthable, omniauth_providers: [:google_oauth2]
 
-  has_many :items, dependent: :destroy
+  has_many :items, dependent: :delete_all
   has_one :token, dependent: :destroy
 
   validates :email, presence: true,
