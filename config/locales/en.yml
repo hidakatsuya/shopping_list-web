@@ -11,7 +11,7 @@ en:
     empty_state:
       empty: No items
     form:
-      item_placeholder: Item Name
+      item_placeholder: Item name
     index:
       add_item: Add item
       settings: Settings
