@@ -5,6 +5,8 @@ class ApiController < ActionController::Base
 
   before_action :authenticate!
 
+  include LocaleSwitchable
+
   rescue_from WeakParameters::ValidationError do |e|
     respond_error :bad_request, e.message
   end

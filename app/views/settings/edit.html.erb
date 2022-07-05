@@ -1,12 +1,15 @@
 <main class="container container-settings">
   <%= render partial: 'layouts/header', locals: { return_path: items_path } %>
 
-  <div id="api-token">
-    <h4 class="mb-3"><%= t '.api_token_setting' %></h4>
+  <%= turbo_frame_tag 'setting' do %>
+    <%= render 'form', setting: @setting %>
+  <% end %>
+
+  <div class="mt-4">
     <%= turbo_frame_tag 'token', src: token_path %>
   </div>
 
-  <div id="account" class="d-grid mt-5 col-6 gap-2 mx-auto">
+  <div class="d-grid mt-5 col-6 gap-2 mx-auto">
     <%= button_to t('.sign_out'), destroy_user_session_path, method: :delete,
                                                          class: 'btn btn-outline-secondary w-100',
                                                          form_class: 'd-inline-block' %>

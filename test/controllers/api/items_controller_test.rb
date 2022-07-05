@@ -36,6 +36,15 @@ class Api::ItemsControllerTest < ActionDispatch::IntegrationTest
     assert_response :created
   end
 
+  test 'switching locale' do
+    # switch locale to ja from en
+    @user.setting.update!(locale: 'ja')
+
+    # create with empty name
+    post api_items_path, params: { name: '' }, headers: headers
+
+    assert_equal({ 'message' => 'アイテム名を入力してください' }, JSON.parse(response.body))
+  end
 
   private
 

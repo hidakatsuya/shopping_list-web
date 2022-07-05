@@ -1,0 +1,10 @@
+<%= form_with model: setting, url: setting_path, method: :put, data: { turbo_frame: '_top' } do |f| %>
+  <%= form_error_notification(setting, classes: 'mb-1') %>
+
+  <%= f.label :locale, class: 'form-label' %>
+  <%= f.select :locale, I18n.available_locales, {}, class: 'form-select' %>
+
+  <div class="mt-2">
+    <%= f.button t('.save'), class: 'btn btn-outline-primary' %>
+  </div>
+<% end %>

@@ -1,5 +1,6 @@
-<div class="input-group mb-2" data-controller="clipboard">
-  <%= text_field_tag 'token-value', token.value, class: 'form-control p-2',
+<%= label :token, :value, nil, class: 'form-label' %>
+<div class="input-group" data-controller="clipboard">
+  <%= text_field_tag 'token_value', token.value, class: 'form-control p-2',
                                                  readonly: true,
                                                  placeholder: t('.placeholder'),
                                                  data: { 'clipboard-target' => 'source' } %>
@@ -13,7 +14,7 @@
   <% end %>
 </div>
 
-<div class="d-flex align-items-center gap-2">
+<div class="mt-2 d-flex align-items-center gap-2">
   <%= button_to regenerate_token_path, method: :patch,
                                        class: 'btn btn-outline-primary',
                                        form_class: 'd-inline' do %>
@@ -21,8 +22,6 @@
   <% end %>
 
   <% if token.persisted? %>
-    <%= button_to token_path, method: :delete, class: 'btn btn-outline-danger' do %>
-      <%= t '.delete' %>
-    <% end %>
+    <%= button_to t('.delete'), token_path, method: :delete, class: 'btn btn-outline-danger' %>
   <% end %>
 </div>

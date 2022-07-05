@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_many :items, dependent: :delete_all
   has_one :token, dependent: :destroy
+  has_one :setting, dependent: :destroy
 
   validates :email, presence: true,
                     uniqueness: { case_sensitive: true, allow_blank: true },
@@ -23,5 +24,9 @@ class User < ApplicationRecord
         nil
       end
     end
+  end
+
+  def locale
+    setting&.locale
   end
 end

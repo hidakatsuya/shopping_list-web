@@ -16,13 +16,6 @@ en:
       add_item: Add item
       settings: Settings
 
-  pages:
-    settings:
-      api_token_setting: API Token
-      sign_out: Sign out
-      delete_account: Delete account
-      are_you_sure_delete_account: Are you sure?
-
   tokens:
     token:
       placeholder: No token is set
@@ -34,6 +27,14 @@ en:
   layouts:
     header:
       back: Back
+
+  settings:
+    form:
+      save: Save
+    edit:
+      sign_out: Sign out
+      delete_account: Delete account
+      are_you_sure_delete_account: Are you sure?
 
   # others
   omniauth_callbacks:
@@ -47,4 +48,8 @@ en:
         user: User
       user:
         email: Email
+      token:
+        value: API Token
+      setting:
+        locale: Language
 

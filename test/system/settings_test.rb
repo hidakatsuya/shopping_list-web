@@ -13,9 +13,23 @@ class SettingsTest < ApplicationSystemTestCase
   test 'API token' do
     assert_text 'API Token'
 
-    assert_field 'token-value', with: @logged_user.token.value
+    assert_field 'token_value', with: @logged_user.token.value
     assert_button 'Regenerate'
     assert_button 'Delete'
+  end
+
+  test 'language' do
+    select 'ja', from: 'Language'
+    click_on 'Save'
+
+    # Check that the UI texts are rendered in the changed locale (ja).
+    I18n.with_locale('ja') do
+      assert_select Setting.human_attribute_name(:locale), selected: 'ja'
+      assert_button I18n.t('settings.form.save')
+
+      assert_text Token.human_attribute_name(:value)
+      assert_button I18n.t('settings.edit.sign_out')
+    end
   end
 
   test 'sign out' do

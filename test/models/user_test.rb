@@ -31,4 +31,9 @@ class UserTest < ActiveSupport::TestCase
     user = ::User.from_omniauth(**auth_attrs, create_user: true)
     assert ::User.where(auth_attrs.slice(:provider, :uid)).exists?
   end
+
+  test '#locale' do
+    assert_equal 'en', users(:user_a).locale
+    assert_nil users(:user_b).locale
+  end
 end

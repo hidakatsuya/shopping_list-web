@@ -3,6 +3,8 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
+  include LocaleSwitchable
+
   # For using OmniAuth without other authentications
   # https://github.com/heartcombo/devise/wiki/OmniAuth%3A-Overview#using-omniauth-without-other-authentications
   def new_session_path(scope)

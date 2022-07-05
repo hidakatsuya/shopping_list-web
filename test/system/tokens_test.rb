@@ -9,7 +9,7 @@ class TokensTest < ApplicationSystemTestCase
     visit token_path
 
     assert_text 'API Token'
-    assert_field 'token-value', with: logged_user.token.value
+    assert_field 'token_value', with: logged_user.token.value
     assert_button 'Regenerate'
     assert_button 'Delete'
   end
@@ -20,7 +20,7 @@ class TokensTest < ApplicationSystemTestCase
     visit token_path
 
     assert_text 'API Token'
-    assert_field 'token-value', with: ''
+    assert_field 'token_value', with: ''
     assert_button 'Generate'
     assert_no_button 'Delete'
   end
@@ -34,7 +34,7 @@ class TokensTest < ApplicationSystemTestCase
       click_on 'Generate'
 
       assert_text 'API Token'
-      assert_field 'token-value', with: 'generated token'
+      assert_field 'token_value', with: 'generated token'
       assert_button 'Regenerate'
       assert_button 'Delete'
     end
@@ -49,7 +49,7 @@ class TokensTest < ApplicationSystemTestCase
       click_on 'Regenerate'
 
       assert_text 'API Token'
-      assert_field 'token-value', with: 'regenerated token'
+      assert_field 'token_value', with: 'regenerated token'
       assert_button 'Regenerate'
       assert_button 'Delete'
     end
@@ -63,7 +63,7 @@ class TokensTest < ApplicationSystemTestCase
     click_on 'Delete'
 
     assert_text 'API Token'
-    assert_field 'token-value', with: ''
+    assert_field 'token_value', with: ''
     assert_button 'Generate'
     assert_no_button 'Delete'
   end

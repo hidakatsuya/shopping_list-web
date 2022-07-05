@@ -16,13 +16,6 @@ ja:
       add_item: 追加する
       settings: 設定
 
-  pages:
-    settings:
-      api_token_setting: APIトークン
-      sign_out: ログアウト
-      delete_account: アカウント削除
-      are_you_sure_delete_account: 本当によろしいですか？
-
   tokens:
     token:
       placeholder: トークンは設定されていません
@@ -34,6 +27,14 @@ ja:
   layouts:
     header:
       back: 戻る
+
+  settings:
+    form:
+      save: 保存
+    edit:
+      sign_out: ログアウト
+      delete_account: アカウント削除
+      are_you_sure_delete_account: 本当によろしいですか？
 
   # others
   omniauth_callbacks:
@@ -47,3 +48,7 @@ ja:
         user: ユーザー
       user:
         email: メールアドレス
+      token:
+        value: APIトークン
+      setting:
+        locale: 言語

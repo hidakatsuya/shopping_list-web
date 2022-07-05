@@ -13,12 +13,12 @@ Rails.application.routes.draw do
     delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
-  get 'settings' => 'pages#settings'
+  get 'settings' => 'settings#edit'
 
+  resource :setting, only: [:edit, :update]
   resource :token, only: [:show, :destroy] do
     patch 'regenerate'
   end
-  resolve('Token') { [:token] }
 
   resources :items, except: [:show] do
     member do
