@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: %i(edit update destroy complete incomplete)
 
   def index
-    @items = current_user.items.ordered.incompletes
+    @items = current_user.items.ordered.incompleted
   end
 
   def new

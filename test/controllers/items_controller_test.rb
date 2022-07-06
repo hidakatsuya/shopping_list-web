@@ -16,7 +16,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     get items_path
 
     assert_response :success
-    assert_equal @logged_user.items.incompletes, controller_assigns(:items)
+    assert_equal @logged_user.items.incompleted, controller_assigns(:items)
   end
 
   test 'new' do

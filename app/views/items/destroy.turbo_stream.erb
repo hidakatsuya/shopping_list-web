@@ -1,6 +1,6 @@
 <%= turbo_stream.remove @item %>
 
-<% unless current_user.items.incompletes.exists? %>
+<% unless current_user.items.incompleted.exists? %>
   <%= turbo_stream.update Item.new do %>
     <%= render 'items/empty_state' %>
   <% end %>

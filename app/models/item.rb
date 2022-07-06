@@ -6,8 +6,8 @@ class Item < ApplicationRecord
   validates :name, presence: true
 
   scope :ordered, -> { order(id: :desc) }
-  scope :incompletes, -> { where(completed: false) }
-  scope :completes, -> { where(completed: true) }
+  scope :incompleted, -> { where(completed: false) }
+  scope :completed, -> { where(completed: true) }
 
   def complete
     update(completed: true)
