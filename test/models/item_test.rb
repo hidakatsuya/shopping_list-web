@@ -7,10 +7,6 @@ class ItemTest < ActiveSupport::TestCase
     assert_equal items(:one, :three), Item.incompleted
   end
 
-  test 'scope :completed' do
-    assert_equal [items(:two)], Item.completed
-  end
-
   test '#complete' do
     items(:one).complete
     assert items(:one).completed?
