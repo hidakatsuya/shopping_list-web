@@ -1,6 +1,6 @@
 <%= label :token, :value, nil, class: 'form-label' %>
 <div class="input-group" data-controller="clipboard">
-  <%= text_field_tag 'token_value', token.value, class: 'form-control p-2',
+  <%= text_field_tag 'token_value', token.value, class: 'form-control p-2 shadow-none',
                                                  readonly: true,
                                                  placeholder: t('.placeholder'),
                                                  data: { 'clipboard-target' => 'source' } %>
