@@ -2,11 +2,13 @@
   <%= render partial: 'layouts/header', locals: { return_path: items_path } %>
 
   <%= turbo_frame_tag 'setting' do %>
-    <%= render 'form', setting: @setting %>
+    <%= render 'setting_form', setting: @setting %>
   <% end %>
 
   <div class="mt-4">
-    <%= turbo_frame_tag 'token', src: token_path %>
+    <%= turbo_frame_tag 'token' do %>
+      <%= render @token %>
+    <% end %>
   </div>
 
   <div class="d-grid mt-5 col-6 gap-2 mx-auto">

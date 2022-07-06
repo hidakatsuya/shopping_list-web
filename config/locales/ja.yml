@@ -29,7 +29,7 @@ ja:
       back: 戻る
 
   settings:
-    form:
+    setting_form:
       save: 保存
     edit:
       sign_out: ログアウト

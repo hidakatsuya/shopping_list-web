@@ -3,34 +3,34 @@ require "test_helper"
 class SettingsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-  test 'update with user whose has no setting' do
+  test 'update_setting with user whose has no setting' do
     user = sign_in_with(:user_b)
 
     assert_difference ->{ Setting.where(user: user).count }, 1 do
-      put setting_path, params: { setting: { locale: 'ja' } }
+      put settings_update_setting_path, params: { setting: { locale: 'ja' } }
     end
 
     assert_equal 'ja', user.reload.setting.locale
     assert_redirected_to settings_path
   end
 
-  test 'update with user whose has setting' do
+  test 'update_setting with user whose has setting' do
     user = sign_in_with(:user_a)
 
     assert_no_difference ->{ Setting.count } do
-      put setting_path, params: { setting: { locale: 'ja' } }
+      put settings_update_setting_path, params: { setting: { locale: 'ja' } }
     end
 
     assert_equal 'ja', user.reload.setting.locale
     assert_redirected_to settings_path
   end
 
-  test 'update with invalid locale' do
+  test 'update_setting with invalid locale' do
     user = sign_in_with(:user_a)
 
-    put setting_path, params: { setting: { locale: 'unknown locale' } }
+    put settings_update_setting_path, params: { setting: { locale: 'unknown locale' } }
 
-    assert_response :unprocessable_entity
+    assert_response :success
     assert controller_assigns(:setting).errors.of_kind?(:locale, :inclusion)
   end
 

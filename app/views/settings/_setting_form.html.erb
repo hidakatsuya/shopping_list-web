@@ -1,4 +1,8 @@
-<%= form_with model: setting, url: setting_path, method: :put, data: { turbo_frame: '_top' } do |f| %>
+<%= form_with model: setting,
+              url: settings_update_setting_path,
+              method: :put,
+              data: { turbo_frame: '_top' } do |f| %>
+
   <%= form_error_notification(setting, classes: 'mb-1') %>
 
   <%= f.label :locale, class: 'form-label' %>

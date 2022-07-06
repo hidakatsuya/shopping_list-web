@@ -29,7 +29,7 @@ en:
       back: Back
 
   settings:
-    form:
+    setting_form:
       save: Save
     edit:
       sign_out: Sign out

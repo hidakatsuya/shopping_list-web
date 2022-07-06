@@ -25,7 +25,7 @@ class SettingsTest < ApplicationSystemTestCase
     # Check that the UI texts are rendered in the changed locale (ja).
     I18n.with_locale('ja') do
       assert_select Setting.human_attribute_name(:locale), selected: 'ja'
-      assert_button I18n.t('settings.form.save')
+      assert_button I18n.t('settings.setting_form.save')
 
       assert_text Token.human_attribute_name(:value)
       assert_button I18n.t('settings.edit.sign_out')

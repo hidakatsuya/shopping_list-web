@@ -13,9 +13,9 @@ Rails.application.routes.draw do
     delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
-  get 'settings' => 'settings#edit'
+  get 'settings', to: 'settings#edit'
+  put 'settings/update_setting'
 
-  resource :setting, only: [:edit, :update]
   resource :token, only: [:show, :destroy] do
     patch 'regenerate'
   end
