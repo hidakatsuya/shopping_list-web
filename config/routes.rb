@@ -30,4 +30,8 @@ Rails.application.routes.draw do
   namespace :api do
     post 'items', to: 'items#create'
   end
+
+  namespace :mobile do
+    get 'sign_in', to: 'sessions#create'
+  end
 end
