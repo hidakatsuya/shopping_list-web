@@ -12,6 +12,12 @@ Under development
 ## Development
 
 ```
+cp .env.sample .env
+```
+
+Then set the value of those environment variables.
+
+```
 docker-compose build
 docker-compose run app bin/setup
 docker-compose up -d app
