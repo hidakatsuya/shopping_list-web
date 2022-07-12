@@ -75,7 +75,8 @@ gem "weak_parameters", ">= 0.5.0"
 gem "omniauth-google-oauth2", ">= 1.0.1"
 gem "omniauth-rails_csrf_protection", ">= 1.0.1"
 
-gem "rails-i18n", "~> 7.0.0"
+gem "rails-i18n", ">= 7.0.3"
+gem "google-id-token", ">= 1.4.2"
 
 # For using the version that fixes the FrozenError
 # https://github.com/faye/websocket-driver-ruby/pull/85
