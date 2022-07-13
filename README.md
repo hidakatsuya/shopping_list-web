@@ -2,7 +2,7 @@
 
 [![Test](https://github.com/hidakatsuya/shopping_list/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/hidakatsuya/shopping_list/actions/workflows/test.yml)
 
-A web app to manage a super simple shopping list.
+A simple web application to manage shopping list.
 It is built with [Rails7](https://github.com/rails/rails) and [Hotwire](https://hotwired.dev/).
 
 ## Status
