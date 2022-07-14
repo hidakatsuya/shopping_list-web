@@ -7,7 +7,10 @@ module Mobile
     skip_before_action :authenticate_user!
 
     def create
-      payload = GoogleIdTokenPayload.load_from(params[:id_token], ENV['GOOGLE_CLIENT_ID'])
+      payload = GoogleIdTokenPayload.load_from(
+        params[:id_token],
+        google_client_id: ENV['GOOGLE_CLIENT_ID']
+      )
 
       user = payload.uid.present? && User.find_by(uid: payload.uid)
 
