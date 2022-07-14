@@ -7,9 +7,10 @@
 #
 class GoogleIdTokenPayload
   class << self
-    def verify(id_token, google_client_id)
-      payload = GoogleIDToken::Validator.new
-        .yield_self { |validator| validator.check(id_token, google_client_id) }
+    def load_from(id_token, google_client_id:)
+      validator = GoogleIDToken::Validator.new
+      payload = validator.check(id_token, google_client_id)
+
       new payload
     rescue GoogleIDToken::ValidationError => e
       Rails.logger.error "Failed to verify token: #{e}"

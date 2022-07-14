@@ -7,13 +7,13 @@ module Mobile
     skip_before_action :authenticate_user!
 
     def create
-      payload = GoogleIdTokenPayload.verify(params[:id_token], ENV['GOOGLE_CLIENT_ID'])
+      payload = GoogleIdTokenPayload.load_from(params[:id_token], ENV['GOOGLE_CLIENT_ID'])
 
       user = payload.uid.present? && User.find_by(uid: payload.uid)
 
       if user.present?
         sign_in user
-        redirect_to root_path
+        redirect_to items_path
       else
         redirect_to mobile_sign_in_path
       end
