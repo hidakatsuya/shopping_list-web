@@ -32,5 +32,7 @@ class Mobile::SessionsControllerTest < ActionDispatch::IntegrationTest
     mock_validator.expect(:check, { 'sub' => uid }) { |arg1| arg1 == 'id_token' }
 
     GoogleIDToken::Validator.stub(:new, mock_validator, &block)
+
+    assert_mock mock_validator
   end
 end
