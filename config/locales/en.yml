@@ -29,6 +29,7 @@ en:
       back: Back
 
   settings:
+    title: Settings
     setting_form:
       save: Save
     edit:

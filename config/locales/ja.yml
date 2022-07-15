@@ -29,6 +29,7 @@ ja:
       back: 戻る
 
   settings:
+    title: 設定
     setting_form:
       save: 保存
     edit:

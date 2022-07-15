@@ -32,11 +32,23 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert controller_assigns(:setting).errors.of_kind?(:locale, :inclusion)
+    assert_title
+  end
+
+  test 'edit' do
+    sign_in_with :user_a
+    get settings_path
+
+    assert_title
   end
 
   private
 
   def sign_in_with(user_key)
     users(user_key).tap { |user| sign_in user }
+  end
+
+  def assert_title
+    assert_select 'title', 'Settings'
   end
 end
