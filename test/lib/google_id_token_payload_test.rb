@@ -16,7 +16,7 @@ class GoogleIdTokenPayloadTest < ActiveSupport::TestCase
     assert_nil GoogleIdTokenPayload.load_from('invalid_id_token', google_client_id: 'client_id')
   end
 
-  test '.verify with valid token' do
+  test '.load_from with valid token' do
     mock_validator = Minitest::Mock.new
     mock_validator.expect(
       :check,
