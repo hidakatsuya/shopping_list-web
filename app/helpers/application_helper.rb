@@ -7,4 +7,8 @@ module ApplicationHelper
     render partial: 'layouts/error_notification',
            locals: { model: model, classes: Array.wrap(classes) }
   end
+
+  def not_turbo_native
+    yield unless turbo_native?
+  end
 end

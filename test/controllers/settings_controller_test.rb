@@ -3,6 +3,13 @@ require "test_helper"
 class SettingsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
+  test 'edit' do
+    sign_in_with :user_a
+    get settings_path
+
+    assert_title
+  end
+
   test 'update_setting with user whose has no setting' do
     user = sign_in_with(:user_b)
 
@@ -32,13 +39,6 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert controller_assigns(:setting).errors.of_kind?(:locale, :inclusion)
-    assert_title
-  end
-
-  test 'edit' do
-    sign_in_with :user_a
-    get settings_path
-
     assert_title
   end
 
