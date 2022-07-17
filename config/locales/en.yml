@@ -14,7 +14,6 @@ en:
       item_placeholder: Item name
     index:
       add_item: Add item
-      settings: Settings
 
   tokens:
     token:
