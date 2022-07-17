@@ -12,7 +12,7 @@ module Mobile
         google_client_id: ENV['GOOGLE_CLIENT_ID']
       )
 
-      user = payload.uid.present? && User.find_by(uid: payload.uid)
+      user = payload&.uid.present? && User.find_by(uid: payload.uid)
 
       if user.present?
         sign_in user

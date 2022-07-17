@@ -25,6 +25,12 @@ class Mobile::SessionsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'create with invalid params' do
+    # no params
+    get mobile_sign_in_path
+    assert_redirected_to mobile_sign_in_path
+  end
+
   private
 
   def mock_google_id_token_validator(uid:, &block)
