@@ -18,7 +18,6 @@ services:
       CHROME_URL: http://chrome:3333
     depends_on:
       - postgres
-      - tailwind
 
   tailwind:
     <<: *app-base
