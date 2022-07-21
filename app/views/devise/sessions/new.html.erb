@@ -1,14 +1,16 @@
-<main class="container container-session mt-5">
+<main class="container mt-5 grid grid-cols-8 gap-2">
   <% if flash.alert.present? %>
-    <div class="rounded-3 mb-2 py-2 px-3 border border-danger text-danger">
+    <div class="col-start-2 col-span-6 text-center rounded-md p-3 bg-md-error text-md-on-error">
       <%= flash.alert %>
     </div>
   <% end %>
 
-  <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post,
-                                                            class: 'btn btn-primary w-100',
-                                                            form_class: 'text-center',
-                                                            data: { turbo: false } do %>
-    <i class="bi bi-google me-2"></i><%= t '.sign_in_with_google' %>
+  <%= button_to user_google_oauth2_omniauth_authorize_path,
+                method: :post,
+                class: 'inline-flex items-center justify-center rounded-md px-6 py-3 text-lg bg-md-primary text-md-on-primary w-full',
+                form_class: 'col-start-2 col-span-6',
+                data: { turbo: false } do %>
+    <i class="bi bi-google mr-2"></i>
+    <%= t '.sign_in_with_google' %>
   <% end %>
 </main>

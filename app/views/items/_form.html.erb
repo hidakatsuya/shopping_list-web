@@ -1,14 +1,14 @@
-<%= form_with model: item, html: { class: 'd-flex flex-wrap align-items-center gap-2 rounded rounded-3 border border-gray shadow-sm p-2 mb-2 bg-white' } do |f| %>
+<%= form_with model: item, html: { class: 'flex flex-wrap items-center gap-x-2 rounded p-2 mb-2 border border-md-on-background/20 box-border' } do |f| %>
   <%= form_error_notification(item) %>
 
-  <div class="flex-grow-1">
+  <div class="flex-1">
     <%= f.label :name, class: 'visually-hidden' %>
     <%= f.text_field :name, placeholder: t('.item_placeholder'),
                             autofocus: true,
-                            class: 'd-block d-100 form-control' %>
+                            class: 'box-border block w-full text-on-background rounded border border-md-on-background/20 focus:border-md-primary-variant py-1.5' %>
   </div>
 
-  <%= link_to items_path, class: 'btn btn-light' do %>
+  <%= link_to items_path, class: 'text-md-on-background p-2 bg-transparent' do %>
     <% if item.new_record? %>
       <i class="bi bi-x-lg"></i>
     <% else %>
@@ -16,7 +16,7 @@
     <% end %>
   <% end %>
 
-  <%= f.button value: 'Submit', class: 'btn btn-light' do %>
+  <%= f.button value: 'Submit', class: 'text-md-on-background p-2 bg-transparent' do %>
     <i class="bi bi-check-lg"></i>
   <% end %>
 <% end %>

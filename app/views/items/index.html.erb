@@ -1,11 +1,12 @@
 <main class="container">
-  <div class="text-center mb-3 position-relative">
-    <%= link_to new_item_path, data: { turbo_frame: dom_id(Item.new) }, class: 'btn btn-primary btn-lg' do %>
-      <i class="bi bi-plus-lg"></i>
+  <div class="text-center mb-3 relative">
+    <%= link_to new_item_path, data: { turbo_frame: dom_id(Item.new) },
+                               class: 'inline-flex items-center rounded-md px-6 py-3 text-lg bg-md-secondary text-md-on-secondry' do %>
+      <i class="bi bi-plus-lg mr-1"></i>
       <%= t '.add_item' %>
     <% end %>
-    <%= link_to settings_path, class: 'btn btn-light position-absolute top-50 end-0 translate-middle-y' do %>
-      <i class="bi bi-gear-fill fs-5"></i>
+    <%= link_to settings_path, class: 'inline-flex items-center px-3 py-2 text-md-on-background absolute top-1/2 right-0 -translate-y-1/2' do %>
+      <i class="bi bi-gear-fill text-lg"></i>
     <% end %>
   </div>
 

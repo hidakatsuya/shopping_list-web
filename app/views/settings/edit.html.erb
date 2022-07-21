@@ -1,25 +1,27 @@
 <% content_for :title, t('settings.title') %>
 
-<main class="container container-settings">
+<main class="container">
   <%= render partial: 'layouts/header', locals: { return_path: items_path } %>
 
   <%= turbo_frame_tag 'setting' do %>
     <%= render 'setting_form', setting: @setting %>
   <% end %>
 
-  <div class="mt-4">
+  <div class="mt-6">
     <%= turbo_frame_tag 'token' do %>
       <%= render @token %>
     <% end %>
   </div>
 
-  <div class="d-grid mt-5 col-6 gap-2 mx-auto">
-    <%= button_to t('.sign_out'), destroy_user_session_path, method: :delete,
-                                                         class: 'btn btn-outline-secondary w-100',
-                                                         form_class: 'd-inline-block' %>
-    <%= button_to t('.delete_account'), user_registration_path, method: :delete,
-                                                         form: { data: { turbo_confirm: t('.are_you_sure_delete_account') } },
-                                                         class: 'btn btn-danger w-100',
-                                                         form_class: 'd-inline-block' %>
+  <div class="mt-16 grid grid-cols-6 gap-2">
+    <%= button_to t('.sign_out'), destroy_user_session_path,
+                  method: :delete,
+                  class: 'rounded-md px-5 py-2 bg-md-primary text-md-on-primary w-full',
+                  form_class: 'col-start-2 col-span-4' %>
+    <%= button_to t('.delete_account'), user_registration_path,
+                  method: :delete,
+                  form: { data: { turbo_confirm: t('.are_you_sure_delete_account') } },
+                  class: 'rounded-md px-5 py-2 bg-md-secondary text-md-on-secondary w-full',
+                  form_class: 'col-start-2 col-span-4' %>
   </div>
 </main>
