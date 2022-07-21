@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-md-primary: 98 0 238;
+    --color-md-primary-variant: 55 0 179;
+    --color-md-secondary: 3 218 198;
+    --color-md-secondary-variant: 1 135 134;
+    --color-md-background: 255 255 255;
+    --color-md-surface: 255 255 255;
+    --color-md-error: 176 0 32;
+    --color-md-on-primary: 255 255 255;
+    --color-md-on-secondary: 0 0 0;
+    --color-md-on-background: 0 0 0;
+    --color-md-on-surface: 0 0 0;
+    --color-md-on-error: 255 255 255;
+  }
+}

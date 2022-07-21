@@ -1,27 +1,32 @@
-<%= label :token, :value, nil, class: 'form-label' %>
-<div class="input-group" data-controller="clipboard">
-  <%= text_field_tag 'token_value', token.value, class: 'form-control p-2 shadow-none',
+<%= label :token, :value, nil, class: 'inline-block mb-2' %>
+<div class="flex items-center gap-2 rounded-md border border-md-on-background/20" data-controller="clipboard">
+  <%= text_field_tag 'token_value', token.value, class: 'flex-1 border-0 bg-transparent focus:shadow-none focus:ring-0',
                                                  readonly: true,
                                                  placeholder: t('.placeholder'),
                                                  data: { 'clipboard-target' => 'source' } %>
   <% if token.persisted? %>
     <%= button_tag type: 'button',
                    data: { 'action' => 'clipboard#copy', 'clipboard-target' => 'button' },
-                   class: 'btn btn-secondary',
+                   class: 'px-3 py-2 text-md-on-background',
                    title: t('.copy') do %>
       <i class="bi bi-stickies"></i>
     <% end %>
   <% end %>
 </div>
 
-<div class="mt-2 d-flex align-items-center gap-2">
+<div class="mt-2 flex items-center gap-2">
   <%= button_to regenerate_token_path, method: :patch,
-                                       class: 'btn btn-outline-primary',
-                                       form_class: 'd-inline' do %>
+                                       class: 'inline-flex items-center rounded-md px-5 py-2 bg-md-primary text-md-on-primary',
+                                       form_class: 'inline' do %>
+    <i class="bi bi-arrow-repeat mr-1"></i>
     <%= token.new_record? ? t('.generate') : t('.regenerate') %>
   <% end %>
 
   <% if token.persisted? %>
-    <%= button_to t('.delete'), token_path, method: :delete, class: 'btn btn-outline-danger' %>
+    <%= button_to token_path, method: :delete,
+                              class: 'inline-flex items-center rounded-md px-5 py-2 bg-md-primary text-md-on-primary' do %>
+      <i class="bi bi-trash mr-1"></i>
+      <%= t '.delete' %>
+    <% end %>
   <% end %>
 </div>

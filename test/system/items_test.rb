@@ -48,15 +48,15 @@ class ItemsTest < ApplicationSystemTestCase
   test 'Doing complete/incomplete an item' do
     visit items_path
 
-    assert_no_selector '.text-decoration-line-through', text: items(:one).name
+    assert_no_selector '.line-through', text: items(:one).name
 
     click_on 'Complete', match: :first
 
-    assert_selector '.text-decoration-line-through', text: items(:one).name
+    assert_selector '.line-through', text: items(:one).name
 
     click_on 'Incomplete', match: :first
 
-    assert_no_selector '.text-decoration-line-through', text: items(:one).name
+    assert_no_selector '.line-through', text: items(:one).name
 
     assert_button 'Complete'
   end

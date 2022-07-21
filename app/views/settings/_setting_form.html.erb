@@ -5,10 +5,13 @@
 
   <%= form_error_notification(setting, classes: 'mb-1') %>
 
-  <%= f.label :locale, class: 'form-label' %>
-  <%= f.select :locale, I18n.available_locales, {}, class: 'form-select' %>
+  <%= f.label :locale, class: 'inline-block mb-2' %>
+  <%= f.select :locale, I18n.available_locales, {}, class: 'block w-full rounded-md border-md-on-background/20' %>
 
   <div class="mt-2">
-    <%= f.button t('.save'), class: 'btn btn-outline-primary' %>
+    <%= f.button class: 'inline-flex items-center rounded-md px-5 py-2 bg-md-primary text-md-on-primary' do %>
+      <i class="bi bi-check-lg mr-1"></i>
+      <%= t '.save' %>
+    <% end %>
   </div>
 <% end %>

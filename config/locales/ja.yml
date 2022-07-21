@@ -13,7 +13,7 @@ ja:
     form:
       item_placeholder: アイテム名
     index:
-      add_item: 追加する
+      add_item: アイテムを追加
 
   tokens:
     token:

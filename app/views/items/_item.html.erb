@@ -1,23 +1,23 @@
 <%= turbo_frame_tag item do %>
-  <div class="d-flex align-items-center gap-2 rounded rounded-3 border border-gray shadow-sm p-2 mb-2 bg-white">
+  <div class="flex items-center gap-2 rounded p-2 mb-2 border border-md-on-background/20 box-border">
     <% if item.completed? %>
-      <%= button_to incomplete_item_path(item), method: :post, value: 'Incomplete', class: 'btn btn-none' do %>
+      <%= button_to incomplete_item_path(item), method: :post, value: 'Incomplete', class: 'text-md-on-background p-2 bg-transparent' do %>
         <i class="bi bi-check-square"></i>
       <% end %>
     <% else %>
-      <%= button_to complete_item_path(item), method: :post, value: 'Complete', class: 'btn btn-none' do %>
+      <%= button_to complete_item_path(item), method: :post, value: 'Complete', class: 'text-md-on-background p-2 bg-transparent' do %>
         <i class="bi bi-square"></i>
       <% end %>
     <% end %>
 
-    <div class="<%= class_names('flex-grow-1 text-dark', { 'text-decoration-line-through' => item.completed? }) %>">
+    <div class="<%= class_names('flex-1', { 'line-through' => item.completed? }) %>">
       <%= item.name %>
     </div>
 
-    <%= button_to edit_item_path(item), method: :get, value: 'Edit', class: 'btn btn-light' do %>
+    <%= button_to edit_item_path(item), method: :get, value: 'Edit', class: 'text-md-on-background p-2 bg-transparent' do %>
       <i class="bi bi-pencil-square"></i>
     <% end %>
-    <%= button_to item_path(item), method: :delete, value: 'Delete', class: 'btn btn-light' do %>
+    <%= button_to item_path(item), method: :delete, value: 'Delete', class: 'text-md-on-background p-2 bg-transparent' do %>
       <i class="bi bi-trash"></i>
     <% end %>
   </div>
