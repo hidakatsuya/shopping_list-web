@@ -17,3 +17,18 @@
   white-space: nowrap;
   border: 0;
 }
+
+:root {
+  --color-md-dark-primary: 187, 134, 252;
+  --color-md-dark-primary-variant: 55 0 179;
+  --color-md-dark-secondary: 3 218 198;
+  --color-md-dark-secondary-variant: 3 218 198;
+  --color-md-dark-background: 18, 18, 18;
+  --color-md-dark-surface: 18, 18, 18;
+  --color-md-dark-error: 207, 102, 121;
+  --color-md-dark-on-primary: 0 0 0;
+  --color-md-dark-on-secondary: 0 0 0;
+  --color-md-on-background: 255 255 255;
+  --color-md-on-surface: 255 255 255;
+  --color-md-on-error: 0 0 0;
+}

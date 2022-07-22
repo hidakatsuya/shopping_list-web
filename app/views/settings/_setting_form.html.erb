@@ -6,10 +6,15 @@
   <%= form_error_notification(setting, classes: 'mb-1') %>
 
   <%= f.label :locale, class: 'inline-block mb-2' %>
-  <%= f.select :locale, I18n.available_locales, {}, class: 'block w-full rounded-md border-md-on-background/20' %>
+  <%= f.select :locale,
+               I18n.available_locales.map { |loc| [loc, { class: 'text-md-on-background dark:text-md-dark-on-background' }] },
+               {},
+               class: 'block w-full rounded-md border-md-on-background/20 text-md-on-background ' \
+                      'dark:border-md-dark-on-background/20 dark:text-md-dark-on-background dark:bg-md-dark-background' %>
 
   <div class="mt-2">
-    <%= f.button class: 'inline-flex items-center rounded-md px-5 py-2 bg-md-primary text-md-on-primary' do %>
+    <%= f.button class: 'inline-flex items-center rounded-md px-5 py-2 bg-md-primary text-md-on-primary ' \
+                        'dark:bg-md-dark-primary dark:text-md-dark-on-primary' do %>
       <i class="bi bi-check-lg mr-1"></i>
       <%= t '.save' %>
     <% end %>

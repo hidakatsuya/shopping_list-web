@@ -1,14 +1,18 @@
-<%= form_with model: item, html: { class: 'flex flex-wrap items-center gap-x-2 rounded p-2 mb-2 border border-md-on-background/20 box-border' } do |f| %>
+<%= form_with model: item,
+              html: { class: 'flex flex-wrap items-center gap-x-2 rounded p-2 mb-2 border border-md-on-background/20 box-border dark:border-md-dark-on-background/20' } do |f| %>
   <%= form_error_notification(item) %>
 
   <div class="flex-1">
     <%= f.label :name, class: 'visually-hidden' %>
     <%= f.text_field :name, placeholder: t('.item_placeholder'),
                             autofocus: true,
-                            class: 'box-border block w-full text-on-background rounded border border-md-on-background/20 focus:border-md-primary-variant py-1.5' %>
+                            class: 'box-border block w-full text-md-on-background rounded py-1.5 ' \
+                                   'border border-md-on-background/20 focus:border-md-primary-variant ' \
+                                   'dark:border-md-dark-on-background/20 dark:focus:border-md-dark-primary-variant ' \
+                                   'dark:bg-md-dark-background dark:text-md-dark-on-background' %>
   </div>
 
-  <%= link_to items_path, class: 'text-md-on-background p-2 bg-transparent' do %>
+  <%= link_to items_path, class: 'text-md-on-background bg-transparent p-2 dark:text-md-dark-on-background' do %>
     <% if item.new_record? %>
       <i class="bi bi-x-lg"></i>
     <% else %>
@@ -16,7 +20,7 @@
     <% end %>
   <% end %>
 
-  <%= f.button value: 'Submit', class: 'text-md-on-background p-2 bg-transparent' do %>
+  <%= f.button value: 'Submit', class: 'text-md-on-background bg-transparent p-2 dark:text-md-dark-on-background' do %>
     <i class="bi bi-check-lg"></i>
   <% end %>
 <% end %>

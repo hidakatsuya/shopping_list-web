@@ -1,13 +1,15 @@
 <main class="container mt-5 grid grid-cols-8 gap-2">
   <% if flash.alert.present? %>
-    <div class="col-start-2 col-span-6 text-center rounded-md p-3 bg-md-error text-md-on-error">
+    <div class="col-start-2 col-span-6 text-center rounded-md p-3 bg-md-error text-md-on-error dark:bg-md-dark-error dark:text-md-dark-on-error">
       <%= flash.alert %>
     </div>
   <% end %>
 
   <%= button_to user_google_oauth2_omniauth_authorize_path,
                 method: :post,
-                class: 'inline-flex items-center justify-center rounded-md px-6 py-3 text-lg bg-md-primary text-md-on-primary w-full',
+                class: 'inline-flex items-center justify-center rounded-md px-6 py-3 text-lg ' \
+                       'bg-md-primary text-md-on-primary w-full ' \
+                       'dark:bg-md-dark-primary dark:text-md-dark-on-primary',
                 form_class: 'col-start-2 col-span-6',
                 data: { turbo: false } do %>
     <i class="bi bi-google mr-2"></i>
