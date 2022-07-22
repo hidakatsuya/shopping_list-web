@@ -3,11 +3,19 @@
 [![Test](https://github.com/hidakatsuya/shopping_list/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/hidakatsuya/shopping_list/actions/workflows/test.yml)
 
 A simple web application to manage shopping list.
-It is built with [Rails7](https://github.com/rails/rails) and [Hotwire](https://hotwired.dev/).
+It is built with [Rails7](https://github.com/rails/rails) and [Hotwire](https://hotwired.dev/) and [Tailwind CSS](https://tailwindcss.com/).
 
 ## Status
 
 Under development
+
+## Built With
+
+- Ruby 3.1
+- Rails 7.0
+- Turbo (turbo-rails)
+- Propshaft
+- Tailwind CSS (tailwindcss-rails)
 
 ## Development
 
