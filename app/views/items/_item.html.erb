@@ -1,11 +1,13 @@
 <%= turbo_frame_tag item do %>
-  <div class="flex items-center gap-2 rounded p-2 mb-2 border border-md-on-background/20 box-border">
+  <div class="flex items-center gap-2 rounded p-2 mb-2 border border-md-on-background/20 box-border dark:border-md-dark-on-background/20">
     <% if item.completed? %>
-      <%= button_to incomplete_item_path(item), method: :post, value: 'Incomplete', class: 'text-md-on-background p-2 bg-transparent' do %>
+      <%= button_to incomplete_item_path(item), method: :post, value: 'Incomplete',
+                                                class: 'text-md-on-background bg-transparent p-2 dark:text-md-dark-on-background' do %>
         <i class="bi bi-check-square"></i>
       <% end %>
     <% else %>
-      <%= button_to complete_item_path(item), method: :post, value: 'Complete', class: 'text-md-on-background p-2 bg-transparent' do %>
+      <%= button_to complete_item_path(item), method: :post, value: 'Complete',
+                                              class: 'text-md-on-background bg-transparent p-2 dark:text-md-dark-on-background' do %>
         <i class="bi bi-square"></i>
       <% end %>
     <% end %>
@@ -14,10 +16,12 @@
       <%= item.name %>
     </div>
 
-    <%= button_to edit_item_path(item), method: :get, value: 'Edit', class: 'text-md-on-background p-2 bg-transparent' do %>
+    <%= button_to edit_item_path(item), method: :get, value: 'Edit',
+                                        class: 'text-md-on-background bg-transparent p-2 dark:text-md-dark-on-background' do %>
       <i class="bi bi-pencil-square"></i>
     <% end %>
-    <%= button_to item_path(item), method: :delete, value: 'Delete', class: 'text-md-on-background p-2 bg-transparent' do %>
+    <%= button_to item_path(item), method: :delete, value: 'Delete',
+                                   class: 'text-md-on-background bg-transparent p-2 dark:text-md-dark-on-background' do %>
       <i class="bi bi-trash"></i>
     <% end %>
   </div>

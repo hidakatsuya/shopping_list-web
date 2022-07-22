@@ -14,14 +14,18 @@
   </div>
 
   <div class="mt-16 grid grid-cols-6 gap-2">
-    <%= button_to t('.sign_out'), destroy_user_session_path,
+    <%= button_to t('.sign_out'),
+                  destroy_user_session_path,
                   method: :delete,
-                  class: 'rounded-md px-5 py-2 bg-md-primary text-md-on-primary w-full',
+                  class: 'rounded-md px-5 py-2 bg-md-primary text-md-on-primary w-full ' \
+                         'dark:text-md-dark-on-primary dark:bg-md-dark-primary',
                   form_class: 'col-start-2 col-span-4' %>
-    <%= button_to t('.delete_account'), user_registration_path,
+    <%= button_to t('.delete_account'),
+                  user_registration_path,
                   method: :delete,
                   form: { data: { turbo_confirm: t('.are_you_sure_delete_account') } },
-                  class: 'rounded-md px-5 py-2 bg-md-secondary text-md-on-secondary w-full',
+                  class: 'rounded-md px-5 py-2 bg-md-secondary text-md-on-secondary w-full ' \
+                         'dark:text-md-dark-on-secondary dark:bg-md-dark-secondary',
                   form_class: 'col-start-2 col-span-4' %>
   </div>
 </main>
