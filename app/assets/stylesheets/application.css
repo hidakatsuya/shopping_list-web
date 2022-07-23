@@ -5,6 +5,11 @@
 .field_with_errors input[type="text"]:focus {
   box-shadow: none;
 }
+@media (prefers-color-scheme: dark) {
+  .field_with_errors input[type="text"] {
+    border-color: rgb(var(--color-md-dark-error));
+  }
+}
 
 .visually-hidden {
   position: absolute;
