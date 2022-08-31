@@ -27,7 +27,7 @@ It is built with [Rails7](https://github.com/rails/rails) and [Hotwire](https://
 ## Related Products
 
 - [Shopping List Android](https://github.com/hidakatsuya/shopping_list-android): An Android client for Shopping List
-- Shopping List CLI (comming soon): A command line interface for Shopping List
+- [Shopping List CLI](https://github.com/hidakatsuya/shopping_list-cli): A command line interface for Shopping List
 
 ## Built With
 
