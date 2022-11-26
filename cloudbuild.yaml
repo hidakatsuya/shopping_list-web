@@ -1,0 +1,58 @@
+# substitutions:
+#   _SERVICE_NAME: Name of Cloud Run service
+#   _REGION: Region of SQL
+#   _INSTANCE_NAME: Name of SQL instance
+# https://cloud.google.com/build/docs/configuring-builds/substitute-variable-values
+
+steps:
+  - id: "build image"
+    name: "gcr.io/cloud-builders/docker"
+    entrypoint: 'bash'
+    args: [
+      "-c",
+      "docker build --build-arg CLOUD_SQL_CONNECTION_NAME=$$CLOUD_SQL_CONNECTION_NAME --build-arg DB_PASSWORD=$$DB_PASSWORD --build-arg DB_USERNAME=$$DB_USERNAME --build-arg GOOGLE_CLIENT_ID=$$GOOGLE_CLIENT_ID --build-arg GOOGLE_CLIENT_SECRET=$$GOOGLE_CLIENT_SECRET --build-arg REGISTRABLE_ACCOUNT_EMAILS=$$REGISTRABLE_ACCOUNT_EMAILS --build-arg SECRET_KEY_BASE=$$SECRET_KEY_BASE -t gcr.io/${PROJECT_ID}/${_SERVICE_NAME} . "
+    ]
+    secretEnv:
+      - CLOUD_SQL_CONNECTION_NAME
+      - DB_PASSWORD
+      - DB_USERNAME
+      - GOOGLE_CLIENT_ID
+      - GOOGLE_CLIENT_SECRET
+      - REGISTRABLE_ACCOUNT_EMAILS
+      - SECRET_KEY_BASE
+
+  - id: "push image"
+    name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}"]
+
+  - id: "apply migrations"
+    name: "gcr.io/google-appengine/exec-wrapper"
+    entrypoint: "bash"
+    args: [
+      "-c",
+      "/buildstep/execute.sh -i gcr.io/${PROJECT_ID}/${_SERVICE_NAME} -s ${PROJECT_ID}:${_REGION}:${_INSTANCE_NAME} -e CLOUD_SQL_CONNECTION_NAME=$$CLOUD_SQL_CONNECTION_NAME -e DB_PASSWORD=$$DB_PASSWORD -e DB_USERNAME=$$DB_USERNAME -- bundle exec rails db:migrate"
+    ]
+    secretEnv:
+      - CLOUD_SQL_CONNECTION_NAME
+      - DB_PASSWORD
+      - DB_USERNAME
+
+availableSecrets:
+  secretManager:
+  - versionName: projects/${PROJECT_ID}/secrets/CLOUD_SQL_CONNECTION_NAME/versions/latest
+    env: CLOUD_SQL_CONNECTION_NAME
+  - versionName: projects/${PROJECT_ID}/secrets/DB_PASSWORD/versions/latest
+    env: DB_PASSWORD
+  - versionName: projects/${PROJECT_ID}/secrets/DB_USERNAME/versions/latest
+    env: DB_USERNAME
+  - versionName: projects/${PROJECT_ID}/secrets/GOOGLE_CLIENT_ID/versions/latest
+    env: GOOGLE_CLIENT_ID
+  - versionName: projects/${PROJECT_ID}/secrets/GOOGLE_CLIENT_SECRET/versions/latest
+    env: GOOGLE_CLIENT_SECRET
+  - versionName: projects/${PROJECT_ID}/secrets/REGISTRABLE_ACCOUNT_EMAILS/versions/latest
+    env: REGISTRABLE_ACCOUNT_EMAILS
+  - versionName: projects/${PROJECT_ID}/secrets/SECRET_KEY_BASE/versions/latest
+    env: SECRET_KEY_BASE
+
+images:
+  - "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}"
