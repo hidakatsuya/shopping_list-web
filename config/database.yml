@@ -87,4 +87,4 @@ production:
   database: shopping_list_production
   username: <%= ENV["DB_USERNAME"] %>
   password: <%= ENV["DB_PASSWORD"] %>
-  host: "<%= ENV.fetch("DB_SOCKET_DIR") { '/cloudsql' } %>/<%= ENV["CLOUD_SQL_CONNECTION_NAME"] %>"
+  host: <%= ENV["DB_HOST"] %>
