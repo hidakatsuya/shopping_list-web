@@ -8,10 +8,18 @@ steps:
   - id: "build image"
     name: "gcr.io/cloud-builders/docker"
     entrypoint: 'bash'
-    args: [
-      "-c",
-      "docker build --build-arg CLOUD_SQL_CONNECTION_NAME=$$CLOUD_SQL_CONNECTION_NAME --build-arg DB_PASSWORD=$$DB_PASSWORD --build-arg DB_USERNAME=$$DB_USERNAME --build-arg GOOGLE_CLIENT_ID=$$GOOGLE_CLIENT_ID --build-arg GOOGLE_CLIENT_SECRET=$$GOOGLE_CLIENT_SECRET --build-arg REGISTRABLE_ACCOUNT_EMAILS=$$REGISTRABLE_ACCOUNT_EMAILS --build-arg SECRET_KEY_BASE=$$SECRET_KEY_BASE -t gcr.io/${PROJECT_ID}/${_SERVICE_NAME} . "
-    ]
+    args:
+      - "-c"
+      - >-
+        docker build
+        --build-arg CLOUD_SQL_CONNECTION_NAME=$$CLOUD_SQL_CONNECTION_NAME
+        --build-arg DB_PASSWORD=$$DB_PASSWORD
+        --build-arg DB_USERNAME=$$DB_USERNAME
+        --build-arg GOOGLE_CLIENT_ID=$$GOOGLE_CLIENT_ID
+        --build-arg GOOGLE_CLIENT_SECRET=$$GOOGLE_CLIENT_SECRET
+        --build-arg REGISTRABLE_ACCOUNT_EMAILS=$$REGISTRABLE_ACCOUNT_EMAILS
+        --build-arg SECRET_KEY_BASE=$$SECRET_KEY_BASE
+        -t gcr.io/${PROJECT_ID}/${_SERVICE_NAME} .
     secretEnv:
       - CLOUD_SQL_CONNECTION_NAME
       - DB_PASSWORD
@@ -28,10 +36,16 @@ steps:
   - id: "apply migrations"
     name: "gcr.io/google-appengine/exec-wrapper"
     entrypoint: "bash"
-    args: [
-      "-c",
-      "/buildstep/execute.sh -i gcr.io/${PROJECT_ID}/${_SERVICE_NAME} -s ${PROJECT_ID}:${_REGION}:${_INSTANCE_NAME} -e CLOUD_SQL_CONNECTION_NAME=$$CLOUD_SQL_CONNECTION_NAME -e DB_PASSWORD=$$DB_PASSWORD -e DB_USERNAME=$$DB_USERNAME -- bundle exec rails db:migrate"
-    ]
+    args:
+      - "-c"
+      - >-
+        /buildstep/execute.sh
+        -i gcr.io/${PROJECT_ID}/${_SERVICE_NAME}
+        -s ${PROJECT_ID}:${_REGION}:${_INSTANCE_NAME}
+        -e CLOUD_SQL_CONNECTION_NAME=$$CLOUD_SQL_CONNECTION_NAME
+        -e DB_PASSWORD=$$DB_PASSWORD
+        -e DB_USERNAME=$$DB_USERNAME
+        -- bundle exec rails db:migrate
     secretEnv:
       - CLOUD_SQL_CONNECTION_NAME
       - DB_PASSWORD
