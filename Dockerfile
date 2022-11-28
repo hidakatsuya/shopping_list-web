@@ -31,7 +31,7 @@ ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
 
 RUN bundle exec rails assets:precompile
 
-EXPOSE 8080
+EXPOSE $PORT
 
 RUN chmod +x /app/entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]
