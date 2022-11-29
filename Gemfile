@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.1.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.4"
+gem "rails", ">= 7.0.4"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
@@ -77,7 +77,7 @@ gem "omniauth-rails_csrf_protection", ">= 1.0.1"
 
 gem "rails-i18n", ">= 7.0.3"
 gem "google-id-token", ">= 1.4.2"
-gem "tailwindcss-rails", "~> 2.0"
+gem "tailwindcss-rails", ">= 2.0.21"
 
 # For using the version that fixes the FrozenError
 # https://github.com/faye/websocket-driver-ruby/pull/85
