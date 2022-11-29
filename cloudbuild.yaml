@@ -1,0 +1,51 @@
+steps:
+  - id: "build image"
+    name: "gcr.io/cloud-builders/docker"
+    entrypoint: 'bash'
+    args:
+      - "-c"
+      - >-
+        docker build
+        --build-arg DB_PASSWORD=$$DB_PASSWORD
+        --build-arg DB_USERNAME=$$DB_USERNAME
+        --build-arg DB_HOST=$$DB_HOST
+        --build-arg GOOGLE_CLIENT_ID=$$GOOGLE_CLIENT_ID
+        --build-arg GOOGLE_CLIENT_SECRET=$$GOOGLE_CLIENT_SECRET
+        --build-arg REGISTRABLE_ACCOUNT_EMAILS=$$REGISTRABLE_ACCOUNT_EMAILS
+        --build-arg SECRET_KEY_BASE=$$SECRET_KEY_BASE
+        -t gcr.io/${PROJECT_ID}/${_SERVICE_NAME} .
+    secretEnv:
+      - DB_PASSWORD
+      - DB_USERNAME
+      - DB_HOST
+      - GOOGLE_CLIENT_ID
+      - GOOGLE_CLIENT_SECRET
+      - REGISTRABLE_ACCOUNT_EMAILS
+      - SECRET_KEY_BASE
+
+  - id: "push image"
+    name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}"]
+
+substitutions:
+  _SERVICE_NAME: shopping-list-app
+
+availableSecrets:
+  secretManager:
+  - versionName: projects/${PROJECT_ID}/secrets/DB_PASSWORD/versions/latest
+    env: DB_PASSWORD
+  - versionName: projects/${PROJECT_ID}/secrets/DB_USERNAME/versions/latest
+    env: DB_USERNAME
+  - versionName: projects/${PROJECT_ID}/secrets/DB_HOST/versions/latest
+    env: DB_HOST
+  - versionName: projects/${PROJECT_ID}/secrets/GOOGLE_CLIENT_ID/versions/latest
+    env: GOOGLE_CLIENT_ID
+  - versionName: projects/${PROJECT_ID}/secrets/GOOGLE_CLIENT_SECRET/versions/latest
+    env: GOOGLE_CLIENT_SECRET
+  - versionName: projects/${PROJECT_ID}/secrets/REGISTRABLE_ACCOUNT_EMAILS/versions/latest
+    env: REGISTRABLE_ACCOUNT_EMAILS
+  - versionName: projects/${PROJECT_ID}/secrets/SECRET_KEY_BASE/versions/latest
+    env: SECRET_KEY_BASE
+
+images:
+  - "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}"
