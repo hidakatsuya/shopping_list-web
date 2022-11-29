@@ -86,6 +86,21 @@ Running all tests:
 docker-compose exec app bin/rails test:all
 ```
 
+## Deploying to Google Cloud
+
+Build and submit image
+```
+gcloud builds submit --config cloudbuild.yaml
+```
+
+Deploy Cloud Run
+```
+gcloud run deploy shopping-list-app \
+  --platform managed \
+  --region us-west1 \
+  --image gcr.io/PROJECT_ID/shopping-list-app
+```
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
