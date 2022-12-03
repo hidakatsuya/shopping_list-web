@@ -245,7 +245,7 @@ GEM
     snaky_hash (2.0.0)
       hashie
       version_gem (~> 1.1)
-    stimulus-rails (1.2.0)
+    stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     strscan (3.0.4)
     tailwindcss-rails (2.0.21-x86_64-linux)
