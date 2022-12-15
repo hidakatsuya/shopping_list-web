@@ -10,7 +10,7 @@ jobs:
   system_test:
     name: Test
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -27,16 +27,10 @@ jobs:
         restore-keys: |
           ${{ env.RUBY_VERSION }}-gems-
 
-    - name: Bundle
-      if: steps.cache.outputs.cache-hit != 'true'
-      run: |
-        bundle config path $BUNDLE_STORE_PATH
-        bundle install --jobs 4 --retry 3
-
     - name: Build and setup
       run: |
         docker-compose pull app chrome postgres
-        docker-compose run app bin/rails db:prepare
+        docker-compose run app bin/setup
         docker-compose up -d app chrome
 
     - name: Test
