@@ -1,12 +1,12 @@
 version: "3.7"
 
 x-app: &app-base
-  image: ghcr.io/hidakatsuya/rails-dev:latest
+  image: ghcr.io/hidakatsuya/rails-dev:ruby-3.2
   tty: true
   stdin_open: true
   volumes:
     - .:/app:cached
-    - ${BUNDLE_STORE_PATH:-./tmp/bundle}:/bundle
+    - ./tmp/bundle:/bundle
 
 services:
   app:

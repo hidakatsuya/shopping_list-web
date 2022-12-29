@@ -1,4 +1,4 @@
-FROM ruby:3.1.2-buster
+FROM ruby:3.2.0-buster
 
 WORKDIR /app
 

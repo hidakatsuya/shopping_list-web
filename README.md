@@ -31,7 +31,7 @@ It is built with [Rails7](https://github.com/rails/rails) and [Hotwire](https://
 
 ## Built With
 
-- Ruby 3.1
+- Ruby 3.2
 - Rails 7.0
 - Turbo (turbo-rails)
 - Propshaft

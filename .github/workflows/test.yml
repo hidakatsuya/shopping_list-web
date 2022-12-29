@@ -3,8 +3,7 @@ name: Test
 on: push
 
 env:
-  BUNDLE_STORE_PATH: /tmp/bundle
-  RUBY_VERSION: '3.1.2'
+  BUNDLE_STORE_PATH: ./tmp/bundle
 
 jobs:
   system_test:
@@ -14,18 +13,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ env.RUBY_VERSION }}
 
     - name: Cache
       id: cache
       uses: actions/cache@v3
       with:
         path: ${{ env.BUNDLE_STORE_PATH }}
-        key: ${{ env.RUBY_VERSION }}-gems-${{ hashFiles('Gemfile.lock') }}
-        restore-keys: |
-          ${{ env.RUBY_VERSION }}-gems-
+        key: gems-${{ hashFiles('Gemfile.lock') }}
 
     - name: Build and setup
       run: |
@@ -35,3 +29,6 @@ jobs:
 
     - name: Test
       run: docker-compose exec -T app bin/rails test:all
+
+    - name: Set owner of the file to cache
+      run: sudo chown -R $(whoami) ${{ env.BUNDLE_STORE_PATH }}
