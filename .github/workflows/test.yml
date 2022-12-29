@@ -20,8 +20,6 @@ jobs:
       with:
         path: ${{ env.BUNDLE_STORE_PATH }}
         key: gems-${{ hashFiles('Gemfile.lock') }}
-        restore-keys: |
-          gems-
 
     - name: Build and setup
       run: |
