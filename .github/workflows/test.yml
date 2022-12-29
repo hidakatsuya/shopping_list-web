@@ -3,7 +3,7 @@ name: Test
 on: push
 
 env:
-  BUNDLE_STORE_PATH: /tmp/bundle
+  BUNDLE_STORE_PATH: ./tmp/bundle
 
 jobs:
   system_test:
