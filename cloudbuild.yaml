@@ -34,7 +34,8 @@ steps:
       "run", "deploy", "${_SERVICE_NAME}",
       "--platform", "managed",
       "--region", "us-west1",
-      "--image", "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}"
+      "--image", "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}",
+      "--max-instances", "1"
     ]
 
 substitutions:
