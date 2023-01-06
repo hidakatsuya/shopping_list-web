@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Api
-  class ItemsController < ApiController
+  class ItemsController < BaseController
     validates :create do
       string :name, required: true, strong: true
     end
