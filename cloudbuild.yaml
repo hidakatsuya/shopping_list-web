@@ -13,7 +13,7 @@ steps:
         --build-arg GOOGLE_CLIENT_SECRET=$$GOOGLE_CLIENT_SECRET
         --build-arg REGISTRABLE_ACCOUNT_EMAILS=$$REGISTRABLE_ACCOUNT_EMAILS
         --build-arg SECRET_KEY_BASE=$$SECRET_KEY_BASE
-        -t gcr.io/${PROJECT_ID}/${_SERVICE_NAME} .
+        -t gcr.io/${PROJECT_ID}/${_APP_IMAGE_NAME} .
     secretEnv:
       - DB_PASSWORD
       - DB_USERNAME
@@ -34,19 +34,32 @@ steps:
       "bin/rails", "db:migrate"
     ]
 
-  - id: "deploy"
+  - id: "deploy app"
     name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: "gcloud"
     args: [
-      "run", "deploy", "${_SERVICE_NAME}",
+      "run", "deploy", "${_APP_SERVICE_NAME}",
       "--platform", "managed",
       "--region", "us-west1",
-      "--image", "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}",
+      "--image", "gcr.io/${PROJECT_ID}/${_APP_IMAGE_NAME}",
+      "--max-instances", "1"
+    ]
+
+  - id: "deploy job"
+    name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "gcloud"
+    args: [
+      "run", "deploy", "${_JOB_SERVICE_NAME}",
+      "--platform", "managed",
+      "--region", "us-west1",
+      "--image", "gcr.io/${PROJECT_ID}/${_APP_IMAGE_NAME}",
       "--max-instances", "1"
     ]
 
 substitutions:
-  _SERVICE_NAME: shopping-list-app
+  _APP_IMAGE_NAME: shopping-list-app
+  _APP_SERVICE_NAME: shopping-list-app
+  _JOB_SERVICE_NAME: shopping-list-job
 
 availableSecrets:
   secretManager:
@@ -66,4 +79,4 @@ availableSecrets:
     env: SECRET_KEY_BASE
 
 images:
-  - "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}"
+  - "gcr.io/${PROJECT_ID}/${_APP_IMAGE_NAME}"
