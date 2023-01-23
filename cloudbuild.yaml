@@ -25,7 +25,14 @@ steps:
 
   - id: "push image"
     name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}"]
+    args: ["push", "gcr.io/${PROJECT_ID}/${_APP_IMAGE_NAME}"]
+
+  - id: "migrate database"
+    name: "gcr.io/cloud-builders/docker"
+    args: [
+      "run", "gcr.io/${PROJECT_ID}/${_APP_IMAGE_NAME}",
+      "bin/rails", "db:migrate"
+    ]
 
   - id: "deploy"
     name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
