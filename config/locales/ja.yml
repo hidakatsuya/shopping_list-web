@@ -52,3 +52,8 @@ ja:
         value: APIトークン
       setting:
         locale: 言語
+
+  user_mailer:
+    remaining_item_notification:
+      subject: "%{item_count}個の未完了のアイテムがあります"
+      view_more: すべて確認する

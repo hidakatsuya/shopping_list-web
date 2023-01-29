@@ -1,0 +1,9 @@
+<ul>
+<% @item_names.each do |name| %>
+  <li><%= name %></li>
+<% end %>
+</ul>
+
+<p>
+  <%= link_to t('.view_more'), items_url %>
+</p>

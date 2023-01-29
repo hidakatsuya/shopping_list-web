@@ -53,3 +53,7 @@ en:
       setting:
         locale: Language
 
+  user_mailer:
+    remaining_item_notification:
+      subject: "You have %{item_count} remaining item(s)"
+      view_more: View more
