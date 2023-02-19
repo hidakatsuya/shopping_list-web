@@ -26,5 +26,9 @@ module ShoppingList
     # Email addresses to which accounts can be registered. If there is more than one,
     # separate them with a space.
     config.registrable_account_emails = ENV['REGISTRABLE_ACCOUNT_EMAILS']
+
+    if defined?(GsmEnv) && Rails.env.production?
+      GsmEnv.load(filter: 'labels.role=app')
+    end
   end
 end
