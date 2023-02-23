@@ -1,11 +1,12 @@
 steps:
   - id: "build image"
     name: "gcr.io/cloud-builders/docker"
-    entrypoint: "bash"
     args: [
-      "-c",
-      "docker build --build-arg SECRET_KEY_BASE=$$SECRET_KEY_BASE -t gcr.io/${PROJECT_ID}/${_APP_IMAGE_NAME} . "
-    ],
+      "build",
+      "--build-arg", "SECRET_KEY_BASE=$$SECRET_KEY_BASE",
+      "-t", "gcr.io/${PROJECT_ID}/${_APP_IMAGE_NAME}",
+      "."
+    ]
     secretEnv: ["SECRET_KEY_BASE"]
 
   - id: "push image"
@@ -15,7 +16,10 @@ steps:
   - id: "migrate database"
     name: "gcr.io/cloud-builders/docker"
     args: [
-      "run", "gcr.io/${PROJECT_ID}/${_APP_IMAGE_NAME}", "--env", "GCP_PROJECT_ID=${PROJECT_ID}",
+      "run",
+      "--network", "cloudbuild",
+      "--env", "GCP_PROJECT_ID=${PROJECT_ID}",
+      "gcr.io/${PROJECT_ID}/${_APP_IMAGE_NAME}",
       "bin/rails", "db:migrate"
     ]
 
