@@ -27,7 +27,10 @@ module ShoppingList
     # separate them with a space.
     config.registrable_account_emails = ENV['REGISTRABLE_ACCOUNT_EMAILS']
 
-    if defined?(GsmEnv) && Rails.env.production?
+    # ENV['GSM_ENV_SKIP_LOAD']:
+    #   This used when loading of secrets is not required, such s when running rake assets:precompile
+    #     $ GSM_ENV_SKIP_LOAD=1 bin/rails assets:precompile
+    if !ENV['GSM_ENV_SKIP_LOAD'] && defined?(GsmEnv) && Rails.env.production?
       GsmEnv.load(filter: 'labels.role=app')
     end
   end
