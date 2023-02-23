@@ -86,14 +86,6 @@ Running all tests:
 docker-compose exec app bin/rails test:all
 ```
 
-## Deployment
-
-### Deploying the app using gcloud
-
-```
-gcloud builds submit --config cloudbuild.yaml
-```
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
