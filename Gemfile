@@ -66,7 +66,7 @@ group :development do
 end
 
 group :test do
-  gem 'cuprite'
+  gem "cuprite"
 end
 
 gem "devise", ">= 4.8.1"
@@ -82,4 +82,4 @@ gem "gsm_env", ">= 1.0.0"
 
 # For using the version that fixes the FrozenError
 # https://github.com/faye/websocket-driver-ruby/pull/85
-gem "websocket-driver", github: 'faye/websocket-driver-ruby', ref: '4739ec948d6af3f0c4c7179306bd8717fe1cf145'
+gem "websocket-driver", github: "faye/websocket-driver-ruby", ref: "4739ec948d6af3f0c4c7179306bd8717fe1cf145"
