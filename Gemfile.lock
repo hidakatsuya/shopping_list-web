@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/hidakatsuya/gsm_env.git
-  revision: 050945d0f6b59084ea8b7610e9f316342bac8163
+  revision: 5c45f6d0c24117ddcf46eaeef24ade93b56fbde8
   specs:
     gsm_env (0.1.0)
       google-cloud-secret_manager (~> 1.2)
