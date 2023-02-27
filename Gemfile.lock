@@ -242,7 +242,7 @@ GEM
       omniauth (~> 2.0)
     orm_adapter (0.5.0)
     os (1.1.4)
-    pg (1.4.5)
+    pg (1.4.6)
     propshaft (0.6.4)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
