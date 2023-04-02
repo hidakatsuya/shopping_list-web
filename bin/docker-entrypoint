@@ -1,5 +1,9 @@
 #!/bin/bash -e
 
+if [ -n "$DB_MIGRATION" ]; then
+  bin/rails db:migrate
+fi
+
 if [ -n "$PORT" ]; then
   bin/rails server -b 0.0.0.0 -p $PORT
 fi
