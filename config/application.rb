@@ -21,17 +21,17 @@ module ShoppingList
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.i18n.available_locales = [:en, :ja]
-
-    # Email addresses to which accounts can be registered. If there is more than one,
-    # separate them with a space.
-    config.registrable_account_emails = ENV['REGISTRABLE_ACCOUNT_EMAILS']
-
     # ENV['GSM_ENV_SKIP_LOAD']:
     #   This used when loading of secrets is not required, such s when running rake assets:precompile
     #     $ GSM_ENV_SKIP_LOAD=1 bin/rails assets:precompile
     if !ENV['GSM_ENV_SKIP_LOAD'] && defined?(GsmEnv) && Rails.env.production?
       GsmEnv.load(filter: 'labels.role=app')
     end
+
+    config.i18n.available_locales = [:en, :ja]
+
+    # Email addresses to which accounts can be registered. If there is more than one,
+    # separate them with a space.
+    config.registrable_account_emails = ENV['REGISTRABLE_ACCOUNT_EMAILS']
   end
 end
