@@ -63,9 +63,10 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'update other users item' do
-    assert_raises ActiveRecord::RecordNotFound do
+    assert_no_changes -> { items(:three).name } do
       patch item_path(items(:three)), params: { item: { name: 'Changed Item' } }
     end
+    assert_response :not_found
   end
 
   test 'destroy' do
@@ -76,9 +77,10 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'destroy other users item' do
-    assert_raises ActiveRecord::RecordNotFound do
+    assert_no_changes -> { items(:three).name } do
       patch item_path(items(:three)), params: { item: { name: 'Changed Item' } }
     end
+    assert_response :not_found
   end
 
   test 'complete' do
