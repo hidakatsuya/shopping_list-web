@@ -16,6 +16,12 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'dae5e8502edde63188f0813db938960f02c68c6d72ebb0265226fc44be707cd769863cb1d6cadb7287f1e0e0e7d7398098119d018e179323d66a6cfc1f2b8c55'
 
+  # This is a workaround that suppress Rails.application.secrets warning
+  # https://github.com/heartcombo/devise/issues/5644
+  #
+  # TODO: The above issue is closed, so this workaround can be removed
+  config.secret_key = Rails.application.secret_key_base
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
