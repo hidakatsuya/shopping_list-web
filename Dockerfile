@@ -18,7 +18,7 @@ ENV RAILS_ENV="production" \
 ARG SECRET_KEY_BASE
 ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
 
-RUN GSM_ENV_SKIP_LOAD=1 bundle exec rails assets:precompile
+RUN bundle exec rails assets:precompile
 
 EXPOSE $PORT
 

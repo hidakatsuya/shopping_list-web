@@ -78,7 +78,6 @@ gem "omniauth-rails_csrf_protection", ">= 1.0.1"
 gem "rails-i18n", ">= 7.0.3"
 gem "google-id-token", ">= 1.4.2"
 gem "tailwindcss-rails", ">= 2.0.21"
-gem "gsm_env", ">= 1.0.0"
 
 # For using the version that fixes the FrozenError
 # https://github.com/faye/websocket-driver-ruby/pull/85
