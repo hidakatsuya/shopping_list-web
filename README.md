@@ -31,8 +31,8 @@ It is built with [Rails7](https://github.com/rails/rails) and [Hotwire](https://
 
 ## Built With
 
-- Ruby 3.2
-- Rails 7.0
+- Ruby 3.3
+- Rails 7.1
 - Turbo (turbo-rails)
 - Propshaft
 - Tailwind CSS (tailwindcss-rails)
@@ -57,9 +57,9 @@ cp .env.sample .env
 Then, set the client ID and secret key for Google OAuth client.
 
 ```
-docker-compose build
-docker-compose run app bin/setup
-docker-compose up -d app tailwind
+docker compose build
+docker compose run app bin/setup
+docker compose up -d app tailwind
 ```
 
 Visit http://localhost:3000.
@@ -68,22 +68,22 @@ Visit http://localhost:3000.
 
 First, launch the chrome container.
 ```
-docker-compose up -d chrome
+docker compose up -d chrome
 ```
 
 Runnning unit tests:
 ```
-docker-compose exec app bin/rails test
+docker compose exec app bin/rails test
 ```
 
 Running system tests:
 ```
-docker-compose exec app bin/rails test:system
+docker compose exec app bin/rails test:system
 ```
 
 Running all tests:
 ```
-docker-compose exec app bin/rails test:all
+docker compose exec app bin/rails test:all
 ```
 
 ## License

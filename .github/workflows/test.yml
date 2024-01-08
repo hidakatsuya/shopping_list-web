@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Cache
       id: cache
@@ -23,12 +23,12 @@ jobs:
 
     - name: Build and setup
       run: |
-        docker-compose pull app chrome postgres
-        docker-compose run app bin/setup
-        docker-compose up -d app chrome
+        docker compose build
+        docker compose run app bin/setup
+        docker compose up -d app chrome
 
     - name: Test
-      run: docker-compose exec -T app bin/rails test:all
+      run: docker compose exec -T app bin/rails test:all
 
     - name: Set owner of the file to cache
       run: sudo chown -R $(whoami) ${{ env.BUNDLE_STORE_PATH }}
