@@ -23,7 +23,7 @@ jobs:
 
     - name: Build and setup
       run: |
-        docker-compose pull app chrome postgres
+        docker-compose build
         docker-compose run app bin/setup
         docker-compose up -d app chrome
 

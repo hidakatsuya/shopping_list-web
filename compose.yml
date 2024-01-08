@@ -1,10 +1,16 @@
 services:
   app-base:
-    image: ghcr.io/hidakatsuya/rails-dev:ruby-3.2
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM ruby:3.3.0
+        RUn echo 'IRB.conf[:USE_AUTO_INDENT] = false' >> ~/.irbrc
+        WORKDIR /rails
+        RUN bundle config set --local path /bundle
     tty: true
     stdin_open: true
     volumes:
-      - .:/app:cached
+      - .:/rails:cached
       - ./tmp/bundle:/bundle
 
   app:
