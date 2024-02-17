@@ -1,9 +1,8 @@
 #!/bin/bash -e
 
-if [ -n "$DB_MIGRATION" ]; then
-  bin/rails db:migrate
+# If running the rails server then create or migrate existing database
+if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
+  ./bin/rails db:prepare
 fi
 
-if [ -n "$PORT" ]; then
-  bin/rails server -b 0.0.0.0 -p $PORT
-fi
+exec "${@}"
