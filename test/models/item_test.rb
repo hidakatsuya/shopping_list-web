@@ -4,7 +4,7 @@ require 'test_helper'
 
 class ItemTest < ActiveSupport::TestCase
   test 'scope :incompleted' do
-    assert_equal items(:one, :three), Item.incompleted
+    assert_equal items.select { !_1.completed? }.sort_by(&:id), Item.incompleted.order(:id)
   end
 
   test '#complete' do
