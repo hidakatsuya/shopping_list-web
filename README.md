@@ -36,6 +36,7 @@ It is built with [Rails7](https://github.com/rails/rails) and [Hotwire](https://
 - Turbo (turbo-rails)
 - Propshaft
 - Tailwind CSS (tailwindcss-rails)
+- SQLite
 
 ## Getting Started
 
@@ -44,32 +45,34 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 - Google OAuth Client
-- Docker
+- Ruby or Docker
 
 ### Installing
 
-Copy .env.sample to create .env:
+Copy .env.sample to create .env, and set the client ID and secret key for Google OAuth client.
 
 ```
 cp .env.sample .env
 ```
 
-Then, set the client ID and secret key for Google OAuth client.
+Then, execute the followings to launch the application.
+
+```
+./bin/setup
+./bin/dev
+```
+
+Alternatively, you can launch the application in a Docker container.
 
 ```
 docker compose build
 docker compose run app bin/setup
-docker compose up -d app tailwind
+docker compose up -d
 ```
-
-Visit http://localhost:3000.
 
 ## Running the tests
 
-First, launch the chrome container.
-```
-docker compose up -d chrome
-```
+First, refer to the above and launch the application in a Docker container.
 
 Runnning unit tests:
 ```
