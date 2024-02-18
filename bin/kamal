@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+bundle exec dotenv -f .env.production kamal $@
