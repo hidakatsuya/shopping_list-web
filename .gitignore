@@ -41,8 +41,8 @@
 
 # The followings are additional settings
 
-# Ignore the dotenv files
-/.env
+# Ignore the dotenv files.
+/.env*
 
 # Ignore Kamal config.
 /config/deploy.yml
