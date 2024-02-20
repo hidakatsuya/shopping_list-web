@@ -34,4 +34,6 @@ Rails.application.routes.draw do
   namespace :mobile do
     get 'sign_in', to: 'sessions#create'
   end
+
+  get 'up' => 'rails/health#show', as: :rails_health_check
 end
