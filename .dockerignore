@@ -38,3 +38,7 @@
 
 # Ignore Kamal config.
 /config/deploy.yml
+
+# Ignore VSCode settings and extension settings
+/.vscode
+/.ruby-lsp
