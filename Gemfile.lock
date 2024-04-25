@@ -148,7 +148,7 @@ GEM
       activesupport (>= 5.0.0)
     jwt (2.8.1)
       base64
-    kamal (1.4.0)
+    kamal (1.5.0)
       activesupport (>= 7.0)
       base64 (~> 0.2)
       bcrypt_pbkdf (~> 1.0)
@@ -189,7 +189,7 @@ GEM
       net-ssh (>= 5.0.0, < 8.0.0)
     net-smtp (0.4.0.1)
       net-protocol
-    net-ssh (7.2.1)
+    net-ssh (7.2.3)
     nio4r (2.7.0)
     nokogiri (1.16.4-x86_64-linux)
       racc (~> 1.4)
@@ -283,7 +283,8 @@ GEM
       hashie
       version_gem (~> 1.1, >= 1.1.1)
     sqlite3 (1.7.3-x86_64-linux)
-    sshkit (1.22.0)
+    sshkit (1.22.1)
+      base64
       mutex_m
       net-scp (>= 1.1.2)
       net-sftp (>= 2.1.2)
@@ -333,7 +334,7 @@ DEPENDENCIES
   google-id-token (>= 1.4.2)
   importmap-rails
   jbuilder
-  kamal (~> 1.4)
+  kamal (~> 1.5)
   omniauth-google-oauth2 (>= 1.0.1)
   omniauth-rails_csrf_protection (>= 1.0.1)
   propshaft
