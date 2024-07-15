@@ -79,4 +79,4 @@ gem "rails-i18n", ">= 7.0.3"
 gem "google-id-token", ">= 1.4.2"
 gem "tailwindcss-rails", ">= 2.0.21"
 
-gem "kamal", "~> 1.4"
+gem "kamal", "~> 1.8"
