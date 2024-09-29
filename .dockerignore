@@ -2,6 +2,7 @@
 
 # Ignore git directory.
 /.git/
+/.gitignore
 
 # Ignore bundler config.
 /.bundle
@@ -36,9 +37,12 @@
 !/app/assets/builds/.keep
 /public/assets
 
-# Ignore Kamal config.
-/config/deploy.yml
+# Ignore CI service files.
+/.github
 
-# Ignore VSCode settings and extension settings
-/.vscode
-/.ruby-lsp
+# Ignore development files
+/.devcontainer
+
+# Ignore Docker-related files
+/.dockerignore
+/Dockerfile*

@@ -32,7 +32,7 @@ It is built with [Rails7](https://github.com/rails/rails) and [Hotwire](https://
 ## Built With
 
 - Ruby 3.3
-- Rails 7.1
+- Rails 7.2
 - Turbo (turbo-rails)
 - Propshaft
 - Tailwind CSS (tailwindcss-rails)

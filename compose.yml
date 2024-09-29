@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile_inline: |
-        FROM ruby:3.3.0
+        FROM ruby:3.3.4
         RUn echo 'IRB.conf[:USE_AUTO_INDENT] = false' >> ~/.irbrc
         WORKDIR /rails
         RUN bundle config set --local path /bundle
@@ -15,7 +15,7 @@ services:
       - ./tmp/bundle:/bundle
     command: bash -c 'rm -f tmp/pids/server.pid; ./bin/dev'
     ports:
-      - '3000:3000'
+      - "3000:3000"
     environment:
       CHROME_URL: http://chrome:3333
     depends_on:
@@ -24,7 +24,7 @@ services:
   chrome:
     image: browserless/chrome:1-chrome-stable
     ports:
-      - '3333:3333'
+      - "3333:3333"
     environment:
       PORT: 3333
       CONNECTION_TIMEOUT: 600000
