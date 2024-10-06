@@ -1,4 +1,4 @@
-name: Test
+name: CI
 
 on: push
 
@@ -6,9 +6,7 @@ env:
   BUNDLE_STORE_PATH: ./tmp/bundle
 
 jobs:
-  system_test:
-    name: Test
-
+  test-and-lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,9 +19,14 @@ jobs:
           path: ${{ env.BUNDLE_STORE_PATH }}
           key: gems-${{ hashFiles('Gemfile.lock') }}
 
-      - name: Build and setup
+      - name: Build
+        run: docker compose build
+
+      - name: Lint
+        run: docker compose run app bin/rubocop
+
+      - name: Set up for test
         run: |
-          docker compose build
           docker compose run app bin/setup --skip-server
           docker compose up -d
 
