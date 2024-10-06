@@ -12,23 +12,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Cache
-      id: cache
-      uses: actions/cache@v4
-      with:
-        path: ${{ env.BUNDLE_STORE_PATH }}
-        key: gems-${{ hashFiles('Gemfile.lock') }}
+      - name: Cache
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.BUNDLE_STORE_PATH }}
+          key: gems-${{ hashFiles('Gemfile.lock') }}
 
-    - name: Build and setup
-      run: |
-        docker compose build
-        docker compose run app bin/setup
-        docker compose up -d
+      - name: Build and setup
+        run: |
+          docker compose build
+          docker compose run app bin/setup --skip-server
+          docker compose up -d
 
-    - name: Test
-      run: docker compose exec -T app bin/rails test:all
+      - name: Test
+        run: docker compose exec -T app bin/rails test:all
 
-    - name: Set owner of the file to cache
-      run: sudo chown -R $(whoami) ${{ env.BUNDLE_STORE_PATH }}
+      - name: Set owner of the file to cache
+        run: sudo chown -R $(whoami) ${{ env.BUNDLE_STORE_PATH }}
