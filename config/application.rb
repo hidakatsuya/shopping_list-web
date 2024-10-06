@@ -28,8 +28,5 @@ module ShoppingList
     # Email addresses to which accounts can be registered. If there is more than one,
     # separate them with a space.
     config.registrable_account_emails = ENV['REGISTRABLE_ACCOUNT_EMAILS']
-
-    # Disable the warning when using SQLite in production.
-    config.active_record.sqlite3_production_warning = false
   end
 end
