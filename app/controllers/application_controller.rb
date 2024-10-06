@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def turbo_native?
-    ua = request&.user_agent || ''
-    ua.include?('Turbo Native')
+    ua = request&.user_agent || ""
+    ua.include?("Turbo Native")
   end
 end

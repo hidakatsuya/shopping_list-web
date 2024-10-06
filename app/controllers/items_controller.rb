@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i(edit update destroy complete incomplete)
+  before_action :set_item, only: %i[edit update destroy complete incomplete]
 
   def index
     @items = current_user.items.ordered.incompleted
@@ -69,7 +69,7 @@ class ItemsController < ApplicationController
     if @item.send(completion)
       respond_to do |format|
         format.html { redirect_to items_path }
-        format.turbo_stream { render 'update' }
+        format.turbo_stream { render "update" }
       end
     else
       render :index, status: :unprocessable_entity

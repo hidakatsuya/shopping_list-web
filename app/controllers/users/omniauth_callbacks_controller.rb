@@ -5,7 +5,7 @@ module Users
     skip_before_action :verify_authenticity_token, only: :google_oauth2
 
     def google_oauth2
-      attributes = user_auth_attributes(request.env['omniauth.auth'])
+      attributes = user_auth_attributes(request.env["omniauth.auth"])
 
       @user = User.from_omniauth(
         **attributes,
@@ -13,14 +13,14 @@ module Users
       )
 
       unless @user
-        redirect_to new_user_session_url, alert: t('omniauth_callbacks.sign_in_failed')
+        redirect_to new_user_session_url, alert: t("omniauth_callbacks.sign_in_failed")
         return
       end
 
       if @user&.persisted?
         sign_in_and_redirect @user, event: :authentication
       else
-        session['devise.google_data'] = request.env['omniauth.auth'].except('extra')
+        session["devise.google_data"] = request.env["omniauth.auth"].except("extra")
         redirect_to new_user_session_url, alert: @user.errors.full_messages.join("\n")
       end
     end
@@ -40,7 +40,7 @@ module Users
     end
 
     def registarable?(email)
-      registerable_emails = Rails.configuration.registrable_account_emails.presence&.split(' ')
+      registerable_emails = Rails.configuration.registrable_account_emails.presence&.split(" ")
       registerable_emails.present? && registerable_emails.include?(email)
     end
   end

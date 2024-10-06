@@ -1,9 +1,9 @@
 # Shopping List
 
-[![Test](https://github.com/hidakatsuya/shopping_list/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/hidakatsuya/shopping_list/actions/workflows/test.yml)
+[![Test](https://github.com/hidakatsuya/shopping_list/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/hidakatsuya/shopping_list/actions/workflows/ci.yml)
 
 A simple web application to manage shopping list.
-It is built with [Rails7](https://github.com/rails/rails) and [Hotwire](https://hotwired.dev/) and [Tailwind CSS](https://tailwindcss.com/).
+It is built with [Rails8](https://github.com/rails/rails) and [Hotwire](https://hotwired.dev/) and [Tailwind CSS](https://tailwindcss.com/).
 
 - Sign up and sign in with Google account
 - Managing items on shopping list
@@ -32,7 +32,7 @@ It is built with [Rails7](https://github.com/rails/rails) and [Hotwire](https://
 ## Built With
 
 - Ruby 3.3
-- Rails 7.2
+- Rails 8.0 beta
 - Turbo (turbo-rails)
 - Propshaft
 - Tailwind CSS (tailwindcss-rails)

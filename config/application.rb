@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module ShoppingList
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.2
+    config.load_defaults 8.0
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
@@ -23,13 +23,10 @@ module ShoppingList
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.i18n.available_locales = [:en, :ja]
+    config.i18n.available_locales = [ :en, :ja ]
 
     # Email addresses to which accounts can be registered. If there is more than one,
     # separate them with a space.
-    config.registrable_account_emails = ENV['REGISTRABLE_ACCOUNT_EMAILS']
-
-    # Disable the warning when using SQLite in production.
-    config.active_record.sqlite3_production_warning = false
+    config.registrable_account_emails = ENV["REGISTRABLE_ACCOUNT_EMAILS"]
   end
 end

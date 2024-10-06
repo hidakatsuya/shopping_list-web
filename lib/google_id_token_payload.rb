@@ -26,6 +26,6 @@ class GoogleIdTokenPayload
   # See OmniAuth::Strategies:
   # https://github.com/zquestz/omniauth-google-oauth2/blob/665a8ccd4c5a65395da9a84fe4790406ede9ddff/lib/omniauth/strategies/google_oauth2.rb#L46
   def uid
-    @payload['sub']
+    @payload["sub"]
   end
 end

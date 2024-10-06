@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class ItemsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
@@ -12,78 +12,78 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     sign_in @logged_user
   end
 
-  test 'index' do
+  test "index" do
     get items_path
 
     assert_response :success
     assert_equal @logged_user.items.incompleted, controller_assigns(:items)
   end
 
-  test 'new' do
+  test "new" do
     get new_item_path
 
     assert_response :success
     assert_equal @logged_user, controller_assigns(:item).user
   end
 
-  test 'create with valid params' do
-    assert_difference ->{ @logged_user.items.count }, 1 do
-      post items_path, params: { item: { name: 'New Item' } }
+  test "create with valid params" do
+    assert_difference -> { @logged_user.items.count }, 1 do
+      post items_path, params: { item: { name: "New Item" } }
     end
 
-    assert_equal @logged_user, Item.find_by(name: 'New Item').user
+    assert_equal @logged_user, Item.find_by(name: "New Item").user
     assert_redirected_to items_path
   end
 
-  test 'create with invalid params' do
-    assert_no_difference ->{ Item.count } do
-      post items_path, params: { item: { name: '' } }
+  test "create with invalid params" do
+    assert_no_difference -> { Item.count } do
+      post items_path, params: { item: { name: "" } }
     end
 
     assert_response :unprocessable_entity
   end
 
-  test 'edit' do
+  test "edit" do
     get edit_item_path(@item)
 
     assert_response :success
   end
 
-  test 'update with valid params' do
-    patch item_path(@item), params: { item: { name: 'Changed Item' } }
+  test "update with valid params" do
+    patch item_path(@item), params: { item: { name: "Changed Item" } }
 
-    assert_equal 'Changed Item', @item.reload.name
+    assert_equal "Changed Item", @item.reload.name
     assert_redirected_to items_path
   end
 
-  test 'update with invalid params' do
-    patch item_path(@item), params: { item: { name: '' } }
+  test "update with invalid params" do
+    patch item_path(@item), params: { item: { name: "" } }
 
     assert_response :unprocessable_entity
   end
 
-  test 'update other users item' do
+  test "update other users item" do
     assert_no_changes -> { items(:three).name } do
-      patch item_path(items(:three)), params: { item: { name: 'Changed Item' } }
+      patch item_path(items(:three)), params: { item: { name: "Changed Item" } }
     end
     assert_response :not_found
   end
 
-  test 'destroy' do
-    assert_difference('Item.count', -1) do
+  test "destroy" do
+    assert_difference("Item.count", -1) do
       delete item_path(@item)
     end
     assert_redirected_to items_path
   end
 
-  test 'destroy other users item' do
+  test "destroy other users item" do
     assert_no_changes -> { items(:three).name } do
-      patch item_path(items(:three)), params: { item: { name: 'Changed Item' } }
+      patch item_path(items(:three)), params: { item: { name: "Changed Item" } }
     end
     assert_response :not_found
   end
 
-  test 'complete' do
+  test "complete" do
     item = items(:one)
     post complete_item_path(item)
 
@@ -91,7 +91,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to items_path
   end
 
-  test 'incomplete' do
+  test "incomplete" do
     item = items(:two)
     post incomplete_item_path(item)
 

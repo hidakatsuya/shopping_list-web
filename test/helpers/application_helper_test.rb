@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class ApplicationHelperTest < ActionView::TestCase
-  test 'not_turbo_native' do
+  test "not_turbo_native" do
     @request_from_turbo_native = true
-    assert_nil not_turbo_native { 'processed' }
+    assert_nil not_turbo_native { "processed" }
 
     @request_from_turbo_native = false
-    assert_equal 'processed', not_turbo_native { 'processed' }
+    assert_equal "processed", not_turbo_native { "processed" }
   end
 
   # emulate ApplicationController#turbo_native? method

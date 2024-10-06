@@ -4,7 +4,7 @@ module ApplicationHelper
   def form_error_notification(model, classes: [])
     return if model.errors.empty?
 
-    render partial: 'layouts/error_notification',
+    render partial: "layouts/error_notification",
            locals: { model: model, classes: Array.wrap(classes) }
   end
 
