@@ -6,7 +6,7 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: user.email,
-      subject: default_i18n_subject(item_count:)
+      subject: default_i18n_subject(item_count: item_count)
     )
   end
 end

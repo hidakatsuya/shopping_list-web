@@ -2,7 +2,7 @@
 
 class SettingsController < ApplicationController
   before_action :set_setting
-  before_action :set_token, only: [:edit]
+  before_action :set_token, only: [ :edit ]
 
   def edit
   end

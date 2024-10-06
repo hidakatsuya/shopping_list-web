@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'google_id_token_payload'
+require "google_id_token_payload"
 
 module Mobile
   class SessionsController < ApplicationController
@@ -9,7 +9,7 @@ module Mobile
     def create
       payload = GoogleIdTokenPayload.load_from(
         params[:id_token],
-        google_client_id: ENV['GOOGLE_CLIENT_ID']
+        google_client_id: ENV["GOOGLE_CLIENT_ID"]
       )
 
       user = payload&.uid.present? && User.find_by(uid: payload.uid)

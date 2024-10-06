@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-ENV["RAILS_ENV"] ||= 'test'
-require_relative '../config/environment'
-require 'rails/test_help'
-require 'minitest/mock'
+ENV["RAILS_ENV"] ||= "test"
+require_relative "../config/environment"
+require "rails/test_help"
+require "minitest/mock"
 
 OmniAuth.config.test_mode = true
 
@@ -20,10 +20,10 @@ class ActiveSupport::TestCase
 
   def omniauth_mock
     OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
-      provider: 'google_oauth2',
-      uid: '999',
+      provider: "google_oauth2",
+      uid: "999",
       info: {
-        email: 'user@example.com'
+        email: "user@example.com"
       }
     )
   end
@@ -34,13 +34,13 @@ class ActiveSupport::TestCase
 
   def omniauth_mock_request_env
     {
-      'devise.mapping' => Devise.mappings[:user],
-      'omniauth.auth' => OmniAuth.config.mock_auth[:google_oauth2]
+      "devise.mapping" => Devise.mappings[:user],
+      "omniauth.auth" => OmniAuth.config.mock_auth[:google_oauth2]
     }
   end
 
   def registrable_account_emails_stub(*emails, &block)
-    value = emails.one? ? emails.first : emails.join(' ')
+    value = emails.one? ? emails.first : emails.join(" ")
     Rails.configuration.stub(:registrable_account_emails, value, &block)
   end
 end

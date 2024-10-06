@@ -23,10 +23,10 @@ module ShoppingList
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.i18n.available_locales = [:en, :ja]
+    config.i18n.available_locales = [ :en, :ja ]
 
     # Email addresses to which accounts can be registered. If there is more than one,
     # separate them with a space.
-    config.registrable_account_emails = ENV['REGISTRABLE_ACCOUNT_EMAILS']
+    config.registrable_account_emails = ENV["REGISTRABLE_ACCOUNT_EMAILS"]
   end
 end
