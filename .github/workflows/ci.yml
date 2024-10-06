@@ -19,19 +19,16 @@ jobs:
           path: ${{ env.BUNDLE_STORE_PATH }}
           key: gems-${{ hashFiles('Gemfile.lock') }}
 
-      - name: Build
-        run: docker compose build
+      - name: Build and prepare
+        run: |
+          docker compose build
+          docker compose run app bin/setup --skip-server
 
       - name: Lint
         run: docker compose run app bin/rubocop
 
-      - name: Set up for test
-        run: |
-          docker compose run app bin/setup --skip-server
-          docker compose up -d
-
       - name: Test
-        run: docker compose exec -T app bin/rails test:all
+        run: docker compose run -T app bin/rails test:all
 
       - name: Set owner of the file to cache
         run: sudo chown -R $(whoami) ${{ env.BUNDLE_STORE_PATH }}
