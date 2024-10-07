@@ -91,21 +91,19 @@ docker compose exec app bin/rails test:all
 
 ## Deploying to production using Kamal
 
-Copy .env.sample to create .env.production, and set the settings.
+Copy `.kamal/envs.sample` to create `.kamal/envs`, and set the environment variables for production.
+
+Load the environment variables from `.kamal/envs` file.
 
 ```
-cp .env.sample .env.production
+source .kamal/envs
 ```
 
-> [!Note]
-> You may need to add SECRET_KEY_BASE and KAMAL_REGISTRY_PASSWORD environment variables.
+Run kamal to deploy.
 
-Configure Kamal with reference to [the official documentation](https://kamal-deploy.org/docs/installation).
-
-Run the `bin/kamal` to deploy. `bin/kamal` loads `.env.production` file present in the application root.
-
-> [!CAUTION]
-> Do not run `kamal` directly. Kamal loads `.env` file present in the application root.
+```
+kamal setup
+```
 
 ## License
 
