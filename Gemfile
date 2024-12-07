@@ -71,4 +71,8 @@ gem "google-id-token", ">= 1.4.2"
 gem "tailwindcss-rails", ">= 2.0.21"
 
 gem "dotenv-rails", ">= 2.7.6", groups: %i[ development test ]
+
 gem "newrelic_rpm"
+gem "stackprof"
+gem "sentry-ruby"
+gem "sentry-rails"
