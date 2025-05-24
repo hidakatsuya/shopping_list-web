@@ -35,3 +35,6 @@
 
 # Ignore Kamal-related files
 /.kamal/envs
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
